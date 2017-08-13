@@ -9,6 +9,8 @@ body{
   z-index: 1;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
+  background-color: rgba(255, 100, 102, 0.30);
+  box-shadow: 3px 0px 3px rgba(133,133,133,0.60);
 }
 #navBar ul{
   list-style-type: none;
@@ -17,7 +19,7 @@ body{
 #navBar ul a:link{
   color: white;
   text-decoration: none;
-  transition: 0.25s;
+  transition: 0.35s;
 }
 #navBar ul a:hover{
   background-color: rgba(255, 192, 203, 0.67);
@@ -33,7 +35,7 @@ body{
   background-color: rgba(255, 88, 117, 0.72);
 }
 #navBar ul li{
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 15px;
 }
 #navBar ul li.active a{
@@ -45,9 +47,12 @@ body{
   margin-top: 50px;
 }
 #contents{
-  background-color: rgba(255, 255, 255, 0.70);
+  background-color: rgba(255, 255, 255, 0.50);
+  float: right;
+  z-index: 0;
   text-align: justify;
   height: 100%;
+  padding-left: 50px;
 }
 .affix{
   top: 0px;

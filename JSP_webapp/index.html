@@ -7,53 +7,89 @@
     <!--외부스타일 시트-->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="./css/plugin.css">
     <!--스크립트 파일-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="scripts/plugin.js"></script>
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/angular-route.js"></script>    
+    <script src="./js/script.js"></script>
     <title>외로운 여행자</title>
   </head>
-  <body data-spy="scroll" data-target="#navBar" data-offset="50" background = "./img/background.jpg";>
-    <!-- affix nav bar -->
+  <body ng-app="layout" background = "./img/background.jpg";>
+    <!-- nav bar -->
     <div class="container-fluid">
       <div class="row content">
-        <nav class="col-sm-2" id="navBar" style="border : 1px solid black;">
-          <p style="font-family: 'courier new'; font-size: 30px; color: white; margin-top: 20px; rgb(38, 38, 38);">Lonely</p>
-          <p style="font-family: 'courier new'; font-size: 30px; color: rgb(133, 133, 133); margin-left: 20px; margin-top:-20px">Travelers</p>
+        <nav class="col-sm-2" id="navBar">
+          <p style="font-family: 'courier new'; font-size: 30px; color: rgb(133,133,133); margin-top: 20px; rgb(38, 38, 38);">Lonely</p>
+          <p style="font-family: 'courier new'; font-size: 30px; color: white; margin-left: 20px; margin-top:-20px">Travelers</p>
           <ul class="nav nav-pills nav-stacked" style="text-align : right; margin-top : 50px;">
-            <li><a href="./findMatch.html">외로워요</a></li>
-            <li><a href="./matchList.html">My 매칭리스트</a></li>
-            <li><a href="./recommendations.html">추천 여행지</a></li>
-            <li><a href="./reviews.html">이용 후기</a></li>
+            <li><a href="#/main">외로워요</a></li>
+            <li><a href="#/myMatchList">My 매칭리스트</a></li>
+            <li><a href="#/recommendations">추천 여행지</a></li>
+            <li><a href="#/reviews">이용 후기</a></li>
           </ul>
         </nav>
-        <div id="contents" class="col-sm-10" style = "border: 1px solid red; float:right; z-index: 0;">
+        <!-- header -->
+        <div id="contents" class="col-sm-10">
           <div class="row" style="text-align: right; height: 50px; padding-top: 10px; padding-right: 20px;">
-            <div class="dropdown" style="border: 1px solid black;">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">마이 페이지</a>
+            <!-- dropdown -->
+            <div class="dropdown">
+              <input type = "button" class ="btn btn-default" data-toggle="dropdown" value = "마이페이지">
               <ul class="dropdown-menu dropdown-menu-right" style="position: absolute; z-index: 1;">
-                <li><a href="./myPage">회원정보 변경</a></li>
+                <li><a href="#myPage">회원정보 변경</a></li>
                 <li class = "divider"></li>
-                <li><a href="./matchList.html">마이 매칭리스트</a></li>                     
+                <li><a href="#myMatchList.html">마이 매칭리스트</a></li>                     
               </ul>
-              <input type = "button" style="float: right;" value = "로그인">
+              <input type = "button" class ="btn btn-default" style="float: right;" value = "로그인" data-toggle="modal" data-target="#logIn">
             </div>
           </div>
-          <div class="row">
-          <!-- 내용은 이 밑에 코딩 -->
-            <p>here comes the contents of the page</p>
 
-
+          <!-- 조원 코딩공간 -->
+          <ng-view></ng-view>
           <!--코딩 끝 -->
+
+        </div>
+      </div>
+    </div>
+  <!--Start of log in modal-->
+  <div id="logIn" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Log in</h4>
+          </div>
+          <div class="modal-body">
+            <!--form action for login -->
+            <form action = "" method = "post">
+              <div class="form-group">
+                <label for="id">ID:</label>
+                <input type="text" class="form-control" placeholder="Enter ID" id="id">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" placeholder="Enter Password" id="pwd">
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox">Remember me</label>
+                <div style="text-align: right;"><label>회원이 아니신가요? <i><a href="#!signup.htm">여기</a></i>를 누르세요</label></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-default" data-dismiss="modal">로그인</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
           </div>
         </div>
       </div>
     </div>
+    <!-- End of log in modal -->
     <!-- footer -->
     <footer>
 
     </footer>
+
+
   </body>
 </html>
