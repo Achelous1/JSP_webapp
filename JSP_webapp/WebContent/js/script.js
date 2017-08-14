@@ -1,7 +1,7 @@
 var app = angular.module("layout", ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
-    .when("/main", {
+    .when("/", {
         templateUrl : "route/main.html"
     })
     .when("/myMatchList", {

@@ -3,15 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!--외부스타일 시트-->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--스크립트 파일-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="./js/angular.min.js"></script>
-    <script src="./js/angular-route.js"></script>    
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
     <script src="./js/script.js"></script>
     <title>외로운 여행자</title>
   </head>
@@ -23,10 +22,10 @@
           <p style="font-family: 'courier new'; font-size: 30px; color: rgb(133,133,133); margin-top: 20px; rgb(38, 38, 38);">Lonely</p>
           <p style="font-family: 'courier new'; font-size: 30px; color: white; margin-left: 20px; margin-top:-20px">Travelers</p>
           <ul class="nav nav-pills nav-stacked" style="text-align : right; margin-top : 50px;">
-            <li><a href="#/main">외로워요</a></li>
-            <li><a href="#/myMatchList">My 매칭리스트</a></li>
-            <li><a href="#/recommendations">추천 여행지</a></li>
-            <li><a href="#/reviews">이용 후기</a></li>
+            <li><a href="#/!">외로워요</a></li>
+            <li><a href="#!myMatchList">My 매칭리스트</a></li>
+            <li><a href="#!recommendations">추천 여행지</a></li>
+            <li><a href="#!reviews">이용 후기</a></li>
           </ul>
         </nav>
         <!-- header -->
@@ -36,9 +35,9 @@
             <div class="dropdown">
               <input type = "button" class ="btn btn-default" data-toggle="dropdown" value = "마이페이지">
               <ul class="dropdown-menu dropdown-menu-right" style="position: absolute; z-index: 1;">
-                <li><a href="#myPage">회원정보 변경</a></li>
+                <li><a href="#!myPage">회원정보 변경</a></li>
                 <li class = "divider"></li>
-                <li><a href="#myMatchList.html">마이 매칭리스트</a></li>                     
+                <li><a href="#!myMatchList">마이 매칭리스트</a></li>                     
               </ul>
               <input type = "button" class ="btn btn-default" style="float: right;" value = "로그인" data-toggle="modal" data-target="#logIn">
             </div>
@@ -73,7 +72,7 @@
               </div>
               <div class="checkbox">
                 <label><input type="checkbox">Remember me</label>
-                <div style="text-align: right;"><label>회원이 아니신가요? <i><a href="#!signup.htm">여기</a></i>를 누르세요</label></div>
+                <div style="text-align: right;"><label>회원이 아니신가요? <i><a href="#!signup.htmㅣ">여기</a></i>를 누르세요</label></div>
               </div>
             </form>
           </div>
@@ -89,7 +88,5 @@
     <footer>
 
     </footer>
-
-
   </body>
 </html>
