@@ -26,8 +26,17 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
   .when('/myPage', {
       templateUrl: './public/route/myPage.html'
   })
+  .when('/viewBoard', {
+      templateUrl: './public/route/viewBoard.html'
+  })
   .otherwise({
     redirectTo: '/'
   });
   //$locationProvider.html5Mode(true);
 });
+
+function loginClose() {
+    var modal = document.getElementById("login");
+    window.location("#!/signup");
+    modal.data-dismiss = "modal";
+}

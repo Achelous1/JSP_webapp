@@ -62,7 +62,7 @@
           </div>
           <div class="modal-body">
             <!--form action for login -->
-            <form action="login.jsp" method = "post">
+            <form action="/LoginServlet" method = "post">
               <div class="form-group">
                 <label for="id">ID:</label>
                 <input type="text" class="form-control" placeholder="Enter ID" id="id">
@@ -73,7 +73,7 @@
               </div>
               <div class="checkbox">
                 <label><input type="checkbox">Remember me</label>
-                <div style="text-align: right;"><label>회원이 아니신가요? <i><a href="#!/signup">여기</a></i>를 누르세요</label></div>
+                <div style="text-align: right;"><label>회원이 아니신가요? <i><a onclick="loginClose();">여기</a></i>를 누르세요</label></div>
               </div>
               <div class="modal-footer">
 	            <button type="submit" class="btn btn-default" data-dismiss="modal">로그인</button>
