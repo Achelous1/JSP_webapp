@@ -4,7 +4,7 @@
         <h1> 게시글 올리기 </h1>
     </thead>
     <tbody>
-        <form action="boardWriter.jsp" method="post" encType="multiplart/form-data">
+        <form ng-submit="boardWrite()" method="post" encType="multiplart/form-data">
             <tr>
                 <th>제목</th>
                 <td><input type="text" placeholder="제목을 입력하세요. " name="" class="form-control"/></td>
@@ -12,8 +12,8 @@
             <tr>
               <th></th>
               <td>
-                <input type="radio" name="name" value="홈피">후기
-                <input type="radio" name="name" value="왕국">추천여행지
+                <input type="radio" name="name" value="review">후기
+                <input type="radio" name="name" value="recommendation">추천여행지
                 <select name='job' size='1'>
                   <option value=''>나의 여행지</option>
                   <option value='17/10/18~17/10/20'>17/10/18~17/10/20</option>
@@ -38,7 +38,7 @@
             <tr>
                 <td colspan="2">
                     <input type="button" value="취소" class="btn btn-default pull-right"/>
-                    <input type="button" value="등록" onclick="sendData()" class="btn btn-primary pull-right"/>
+                    <input type="submit" value="등록" class="btn btn-primary pull-right"/>
                 </td>
             </tr>
         </form>

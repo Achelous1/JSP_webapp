@@ -1,1 +1,9 @@
-<h1>myMatchList.html</h1>
+<h1>My match list</h1>
+<a ng-click="getChatList()">click to load</a>
+<table>
+    <tr ng-repeat="x in list">
+        <td>{{ $index + 1 }}</td>
+        <td>{{ x.Title }}</td>
+        <td>{{ x.Value }}</td>
+    </tr>
+</table>

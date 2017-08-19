@@ -73,3 +73,93 @@ footer{
     padding: 16px 30px;
     font-size: 20px;
 }
+#Box {
+  position:relative;
+  height:20px;
+}
+
+/* for main.html */
+#Title {
+  float:left;
+  width:138px;
+  height:14px;
+  padding:3px;
+  background-color:ACA8AD;
+}
+
+#Title a {
+	height:16px;
+	color:black;
+	font-size:20px;
+	padding:13px;
+	text-decoration:none;
+}
+
+#Content1 {
+  clear:left;
+  float:left;
+  font-size:30px;
+}
+
+#Content2 {
+  font-size:22px;
+}
+
+#Content3 {
+
+  font-size:15px;
+}
+
+#Menu {
+  width: 100%;
+	float:left;
+	padding:5px;
+  background-color:#ACA8AD;
+}
+
+#Menu ul li {
+	float:left;
+	list-style-type:none;
+}
+
+#Menu a {
+	height:2px;
+	color:black;
+	font-size:20px;
+	padding:15px;
+	text-decoration:none;
+
+}
+
+#Menu ul ul {
+	display:none;
+	position:absolute;
+	background-color:gray;
+}
+
+#Menu ul li:hover ul {
+	display: block;
+}
+#main_social{
+  float: left;
+  
+}
+#main_best{
+  margin-top: 30px;
+  width: 75%;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px rgba(133,133,133,0.60);
+  padding: 20px;
+}
+/* end of main */
+
+#review_table{
+  background-color: #ffffff;
+  margin-top: 50px;
+  margin-left: 80px;
+  box-shadow: 3px 3px 3px rgba(133,133,133,0.60);
+  width:70%;
+  text-align: left;
+  padding: 10px;
+}
+
