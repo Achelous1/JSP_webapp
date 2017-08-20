@@ -142,7 +142,7 @@ footer{
 }
 #main_social{
   float: left;
-  
+
 }
 #main_best{
   margin-top: 30px;
@@ -163,3 +163,36 @@ footer{
   padding: 10px;
 }
 
+/**********talkStranger에 관한 스타일*************/
+
+.box1_chat{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: 5%;
+  margin: solid;
+  width: 50%;
+  background: red;
+  height: 600px;
+}
+.box2_chat{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: 60%;
+  margin: solid;
+  width: 35%;
+  top: 0;
+}
+.box3_chat{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: 60%;
+  margin-top: auto;
+  margin: black solid;
+  width: 30%;
+
+
+}
+/**********talkStranger에 관한 스타일 끝*************/
