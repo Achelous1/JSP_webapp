@@ -1,3 +1,7 @@
 *.classpath
+<<<<<<< HEAD
+/.metadata/
+=======
 Servers/.project
 RemoteSystemsTempFiles/.project
+>>>>>>> MYDEV

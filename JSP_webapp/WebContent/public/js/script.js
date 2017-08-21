@@ -1,42 +1,66 @@
+//routing function
 var app = angular.module('layout', ['ngRoute']);
 app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
-
   $routeProvider
+  //route to main page
   .when('/', {
-      templateUrl: './public/route/main.html'
+      templateUrl: './public/route/main.html',
+      controller: 'mainCtrl'
   })
-  .when('/myMatchList', {
-      templateUrl: './public/route/myMatchList.html'
+  //route to matching list
+  .when('/myMatchList.cbs', {
+      templateUrl: './public/route/myMatchList.html',
+      controller : 'matchListCtrl'
   })
+  //route to chatting room
   .when('/myMatchList/:talkStranger', {
-      templateUrl: './public/route/talkStranger.html'
+      templateUrl: './public/route/talkStranger.html',
+      controller : 'chatCtrl'
   })
-  .when('/recommendations', {
-      templateUrl: './public/route/recommendations.html'
+  //route to recommendations board
+  .when('/recommendations.bbs', {
+      templateUrl: './public/route/recommendations.html',
+      controller : 'recommendationCtrl'
   })
-  .when('/reviews', {
-      templateUrl: './public/route/reviews.html'
+  //route to reviews board
+  .when('/reviews.bbs', {
+      templateUrl: './public/route/reviews.html',
+      controller : 'reviewsCtrl'
   })
+  //route to sign up page
   .when('/signup', {
-      templateUrl: './public/route/signup.html'
+      templateUrl: './public/route/signup.html',
+      controller : 'signupCtrl'
   })
-  .when('/boardWrite', {
-      templateUrl: './public/route/boardWrite.html'
+  //route to board write page
+  .when('/boardWrite.bbs', {
+      templateUrl: './public/route/boardWrite.html',
+      controller : 'writeCtrl'
   })
+  //route to my page
   .when('/myPage', {
-      templateUrl: './public/route/myPage.html'
+      templateUrl: './public/route/myPage.html',
+      controller : 'myPageCtrl'
   })
+  //route to board content page
   .when('/viewBoard', {
-      templateUrl: './public/route/viewBoard.html'
+      templateUrl: './public/route/viewBoard.html',
+      controller : 'viewContentsCtrl'
   })
+  //route back to main otherwise
   .otherwise({
     redirectTo: '/'
   });
-  //$locationProvider.html5Mode(true);
-});
+/*  $locationProvider.html5Mode(true);
+*/});
 
-function loginClose() {
-    var modal = document.getElementById("login");
-    window.location("#!/signup");
-    modal.data-dismiss = "modal";
-}
+//date picker
+$('#datePicker').daterangepicker({
+    "showDropdowns": true,
+    "timePicker24Hour": true,
+    "parentEl": "Menu",
+    "startDate": "01/01/2017",
+    "endDate": "01/01/2017"
+}, function(start, end, label) {
+  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+});

@@ -1,79 +1,79 @@
 <h1>회원가입</h1>
-<form>
-  <div style="border:none; width:24%; float:left;" >
-  <center>
-    <table>
-        <tr>
-          <div class="form-group">
-             <td>아이디</td>
-             <td><input type="text" class="form-control" name="id" placeholder="아이디 입력"></td><td><input type="submit" value="중복확인"/></td>
-           </div>
-        </tr>
+    <form>
+      <div style="border:none; width:45%; float:left;" >
+      <center>  <table>
+            <tr>
+              <div class="form-group">
+                 <td>아이디</td>
+                 <td><input type="text" class="form-control" name="id" placeholder="아이디 입력"></td>
+                 <td><input type="button" value="중복확인"/></td>
+               </div>
+            </tr>
 
-        <tr>
-          <div class="form-group">
-             <td>비밀번호</td>
-             <td><input type="text" class="form-control" name="pw" placeholder="비밀번호 입력"></td>
-           </div>
-        </tr>
+            <tr>
+              <div class="form-group">
+                 <td>비밀번호</td>
+                 <td><input type="password" class="form-control" name="pw" placeholder="비밀번호 입력"></td>
+               </div>
+            </tr>
 
-        <tr>
-          <div class="form-group">
-             <td>비밀번호 확인</td>
-             <td><input type="text" class="form-control" name="pw2" placeholder="비밀번호 확인"  ></td>
-           </div>
-        </tr>
+            <tr>
+              <div class="form-group">
+                 <td>비밀번호 확인</td>
+                 <td><input type="password" class="form-control" name="pw2" placeholder="비밀번호 확인"  ></td>
+               </div>
+            </tr>
 
-        <tr>
-          <div class="form-group">
-             <td>이름</td>
-             <td><input type="text" class="form-control" name="na" placeholder="이름을 입력 해주세요"></td>
-           </div>
-        </tr>
+            <tr>
+              <div class="form-group">
+                 <td>이름</td>
+                 <td><input type="text" class="form-control" name="na" placeholder="이름을 입력 해주세요"></td>
+               </div>
+            </tr>
 
-        <tr>
-          <div class="form-group">
-          <td>성별</td>
-        <td><input type="radio"  name="man" />남자
-        <input type="radio"  name="woman" />여자</td>
+            <tr>
+              <div class="form-group">
+              <td>성별</td>
+            <td><input type="radio"  name="gender" value="남자" />남자
+            <input type="radio"  name="gender" value="여자" />여자</td>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="form-group">
+              <td>생년월일</td>
+              <td><input type="text" class="form-control" placeholder="ex.)1990/12/04" name="b"/></td>
+            </div>
+          </tr>
+
+            <tr>
+              <div class="form-group">
+                <td>전화번호</td>
+                <td><input type="text" class="form-control" placeholder="ex.) 010-1111-1111" name="phone" /></td>
+              </div>
+            </tr>
+
+            <tr>
+            <div class="form-group">
+               <td>이메일 주소</td>
+               <td><input type="email" class="form-control" name="mail" placeholder="example@domain.com"></td>
+             </div>
+           </tr>
+
+            <tr>
+            <div class="form-group">
+                <td>주소</td>
+                <td><input type="text" class="form-control" placeholder="동/읍/면/리 입력" name="address" /></td>
+            </tr>
           </div>
-        </tr>
-
-        <tr>
-          <div class="form-group">
-          <td>생년월일</td>
-          <td><input type="text" class="form-control" placeholder="ex.)1990/12/04" name="b"/></td>
-        </div>
-      </tr>
-
-        <tr>
-          <div class="form-group">
-            <td>전화번호</td>
-            <td><input type="text" class="form-control" placeholder="ex.) 010-1111-1111" name="phone" /></td>
-          </div>
-        </tr>
-
-        <tr>
-        <div class="form-group">
-           <td>이메일 주소</td>
-           <td><input type="email" class="form-control" name="mail" placeholder="example@domain.com"></td>
-         </div>
-       </tr>
-
-        <tr>
-        <div class="form-group">
-            <td>주소</td>
-            <td><input type="text" class="form-control" placeholder="동/읍/면/리 입력" name="address" /></td>
-        </tr>
-      </div>
-    </table>
+        </table>
+    </form>
     <input type="submit" value="가입"/>
-  	<input type="reset" value="취소"/>
-</form>
-</center>
-</div>
+    <input type="reset" value="취소"/>
+  </center>
+  </div>
 
-<div style="float:left">
-<td><img src="user_pic_logout.PNG" width="200px" height="200px"></td>
-<td><center><input type="submit" value="프로필 사진 추가"/></center></td>
-<div>
+  <div style="float:left">
+  <td><img src="user_pic_logout.PNG" width="180px" height="180px"></td>
+  <td><center><input type="file" name="프로필 사진 추가"></center></td>
+  <div>
