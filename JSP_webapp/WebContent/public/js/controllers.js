@@ -46,7 +46,7 @@ app.controller('signupCtrl', function ($scope, $http) {
     $scope.signupForward = function (result) {
         alert("signed up");
     }
-    $http.get("/JSP_webapp/MemberFrontCtrl")
+    $http.post("/JSP_webapp/MemberFrontCtrl")
     .then(function (response) {
         //here comes the sign in result
     });
