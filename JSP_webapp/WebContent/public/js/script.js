@@ -13,7 +13,7 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
       controller : 'matchListCtrl'
   })
   //route to chatting room
-  .when('/myMatchList.cbs/:talkStranger', {
+  .when('/myMatchList.cbs/talkStranger', {
       templateUrl: './public/route/talkStranger.html',
       controller : 'chatCtrl'
   })
