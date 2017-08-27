@@ -26,29 +26,32 @@ session_start();
     <title>외로운 여행자</title>
   </head>
   <body ng-app="layout" background="./public/img/background.jpg";>
+    
     <!-- nav bar -->
     <div class="container-fluid">
       <div class="row content">
         <nav class="col-sm-2" id="navBar">
-          <p style="font-family: 'courier new'; font-size: 30px; color: rgb(133,133,133); margin-top: 20px; rgb(38, 38, 38);">Lonely</p>
-          <p style="font-family: 'courier new'; font-size: 30px; color: white; margin-left: 20px; margin-top:-20px">Travelers</p>
+          <p style="font-family: 'lucida handwriting'; font-size: 30px; color: rgb(133,133,133); margin-top: 20px; rgb(38, 38, 38);">Lonely</p>
+          <p style="font-family: 'lucida handwriting'; font-size: 30px; color: white; margin-left: 20px; margin-top:-20px">Travelers</p>
           <ul class="nav nav-pills nav-stacked" style="text-align : right; margin-top : 50px;">
             <li><a href="#!/">외로워요</a></li>
             <li><a href="#!/myMatchList.cbs">My 매칭리스트</a></li>
-            <li><a href="#!/reviews.bbs">이용 후기</a></li>
-            <li><a href="#!/recommendations.bbs">추천 여행지</a></li>
+            <li><a href="#!/reviews.bctrl">이용 후기</a></li>
+            <li><a href="#!/recommendations.bctrl">추천 여행지</a></li>
           </ul>
         </nav>
+       
         <!-- header -->
         <div id="contents" class="col-sm-10">
+          
           <div class="row" style="text-align: right; height: 50px; padding-top: 10px; padding-right: 20px;">
             <!-- dropdown -->
             <div class="dropdown">
               <input type = "button" class ="btn btn-default" data-toggle="dropdown" value = "마이페이지">
-              <ul class="dropdown-menu dropdown-menu-right" style="position: absolute; z-index: 1;">
+              <ul class="dropdown-menu dropdown-menu-right" style="position: absolute; z-index: 1; margin-right: 50px;">
                 <li><a href="#!/myPage">회원정보 변경</a></li>
                 <li class = "divider"></li>
-                <li><a href="#!/myMatchList">마이 매칭리스트</a></li>                     
+                <li><a href="#!/myMatchList.cbs">마이 매칭리스트</a></li>                     
               </ul>
               <input type = "button" class ="btn btn-default" style="float: right;" value = "로그인/회원가입" data-toggle="modal" data-target="#logIn">
             </div>
@@ -81,20 +84,26 @@ session_start();
                 <label for="user_pw">Password:</label>
                 <input type="password" class="form-control" id="user_pw" name="user_pw" placeholder="Enter Password" >
               </div>
-              <div class="sign_in">
+              <div class="sign_up">
                 <div style="text-align: right;"><label>회원이 아니신가요? <i><a href="#!/signup" onclick="document.getElementById('close').click();">여기</a></i>를 누르세요</label></div>
               </div>
               <div class="modal-footer">
-	            <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="login()">로그인</button>
-	            <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="login()">로그인</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 	          </div>
         	 </form>
           </div>
         </div>
       </div>
     </div>
-    <!-- End of log in modal -->
-    <footer>
-    </footer>
+     <!-- alerts -->
+     <div class="modal-body" style="padding:0px">
+        <div class="alert alert-{{data.mode}}" style="margin-bottom:0px">
+            <button type="button" class="close" data-ng-click="close()" >
+                <span class="glyphicon glyphicon-remove-circle"></span>
+            </button>
+            <strong>{{data.boldTextTitle}}</strong> {{data.textAlert}}
+        </div>
+    </div>
   </body>
 </html>

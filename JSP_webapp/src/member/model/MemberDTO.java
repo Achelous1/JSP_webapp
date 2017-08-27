@@ -8,10 +8,17 @@ public class MemberDTO {
 	private String mem_gender;
 	private String birthdate;
 	private int age;
-	private int phoneno;
+	private String phoneno;
 	private String email;
 	private String addr;
 	
+	@Override
+	public String toString() {
+		return "MemberDTO [mem_no=" + mem_no + ", mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name
+				+ ", mem_gender=" + mem_gender + ", birthdate=" + birthdate + ", age=" + age + ", phoneno=" + phoneno
+				+ ", email=" + email + ", addr=" + addr + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
 	public int getMem_no() {
 		return mem_no;
 	}
@@ -54,10 +61,10 @@ public class MemberDTO {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public int getPhoneno() {
+	public String getPhoneno() {
 		return phoneno;
 	}
-	public void setPhoneno(int phoneno) {
+	public void setPhoneno(String phoneno) {
 		this.phoneno = phoneno;
 	}
 	public String getEmail() {

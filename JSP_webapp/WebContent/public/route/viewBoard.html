@@ -4,19 +4,19 @@
 
           <table class="table" width="100%">
             <tr>
-              <th width="30">제목</th>
-              <td width="80%">글보기입니다.</td>
+              <th width="30">{{ content.name }}}</th>
+              <td width="80%">{{ content.city }}.</td>
               <th>조회수</th>
               <td>500</td>
             </tr>
             <tr>
               <th>작성자</th>
-              <td>OO</td>
+              <td>{{ content.author }}</td>
               <th>날짜</th>
               <td>2017/08/17</td>
             </tr>
             <tr height="400" align="top">
-              <td colspan="4">내용입니다.</td>
+              <td colspan="4">{{ content.country }}</td>
             </tr>
             <tr>
               <th>첨부</th>
@@ -24,8 +24,8 @@
             </tr>
             <tr>
               <td colspan="4" align="right">
-                <input type="button" value="글쓰기" onclick="#" class="btn btn-primary">
-                <input type="button" value="목록으로" onclick="#" class="btn btn-default">
+                <input type="button" value="글쓰기" onclick="#!/boardWrite" class="btn btn-primary">
+                <input type="button" value="목록으로" onclick="#!/board.bbs" class="btn btn-default">
               </td>
             </tr>
           </table>

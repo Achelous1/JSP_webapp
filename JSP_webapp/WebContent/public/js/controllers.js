@@ -43,20 +43,43 @@ app.controller('writeCtrl', function ($scope, $http) {
 
 //sign up control
 app.controller('signupCtrl', function ($scope, $http) {
-    $scope.signupForward = function (result) {
-        alert("signed up");
+    // $scope.signup = function(){
+    //     $http.post("/signup.mctrl")({
+    //     }).then(function mySuccess(response) {
+    //         $scope.successSignup = response.data;
+    //     }, function myError(response) {
+    //         $scope.failSignup = response.statusText;
+    //     });
+    // }
+    if(response.status == 500){
+        $scope.data = {
+            boldTextTitle: "에러!",
+            textAlert : "무언가 잘못되었군요! 다시 가입해주세요.",
+            mode : 'warning'
+          }  
     }
-    $http.post("/JSP_webapp/MemberFrontCtrl")
-    .then(function (response) {
-        //here comes the sign in result
-    });
+    else if(response.status == 200){
+        $scope.data = {
+            boldTextTitle: "가입성공!",
+            textAlert : "회원가입이 완료되었습니다. 로그인해주세요.",
+            mode : 'success'
+          }
+    }
 });
 
 //view contents control
 app.controller('viewContentsCtrl', function ($scope, $http) {
-    $scope.viewContents = function (result) {
-        alert("viewing contents");
-    }
+    $http.get("viewBoard.bctrl")
+    .then(function(response) {
+        //First function handles success
+        //$scope.content = response.data;
+        $scope.content = myJSON;
+    }, function(response) {
+        //Second function handles error
+        $scope.error = respons.error;
+        if(error == '404')
+            $scope.content = "there are not contents available";
+    });
 });
 
 //match list controll

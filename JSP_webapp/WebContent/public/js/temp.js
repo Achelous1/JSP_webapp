@@ -1,3 +1,5 @@
+//contatins dummy data
+
 var myJSON = [{ Name: "Alfreds Futterkiste", City: "Berlin", Country: "Germany" },
 { Name: "Ana Trujillo Emparedados y helados", City: "México D.F.", Country: "Mexico" },
 { Name: "Antonio Moreno Taquería", City: "México D.F.", Country: "Mexico" },

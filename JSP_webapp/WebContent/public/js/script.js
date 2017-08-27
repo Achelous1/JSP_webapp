@@ -18,12 +18,12 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
       controller : 'chatCtrl'
   })
   //route to recommendations board
-  .when('/recommendations.bbs', {
+  .when('/recommendations.bctrl', {
       templateUrl: './public/route/recommendations.html',
       controller : 'recommendationCtrl'
   })
   //route to reviews board
-  .when('/reviews.bbs', {
+  .when('/reviews.bctrl', {
       templateUrl: './public/route/reviews.html',
       controller : 'reviewsCtrl'
   })
@@ -33,7 +33,7 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
       controller : 'signupCtrl'
   })
   //route to board write page
-  .when('/boardWrite.bbs', {
+  .when('/boardWrite.bctrl', {
       templateUrl: './public/route/boardWrite.html',
       controller : 'writeCtrl'
   })
@@ -64,3 +64,22 @@ $('#datePicker').daterangepicker({
 }, function(start, end, label) {
   console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
 });
+
+//cancel button
+function moveTo(url){
+    window.location.assign(url);
+}
+
+//alert modal
+var modalInstance = $modal.open({
+    controller: ModalInstanceCtrl,
+    backdrop: true,
+    keyboard: true,
+    backdropClick: true,
+    size: 'lg',
+    resolve: {
+      data: function () {
+        return $scope.data;
+      }
+    }
+  });

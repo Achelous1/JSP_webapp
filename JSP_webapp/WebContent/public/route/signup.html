@@ -1,83 +1,99 @@
-
 <h1>회원가입</h1>
-    <form>
-      <div style="border:none; width:70%; height:100%; float:left;" >
-      <center>  <table>
-            <tr>
-              <div style="width:100%; height:100%; padding:50px; padding:20px 0px 20px 0px;">
-                 <td style="font-size:20px; padding: 0px 0px 22px 0px;">아이디</td>
-                 <td style="padding: 0px 0px 22px 0px;"><input type="text" class="form-control" style="width:400px; height:42px;" name="id" placeholder="아이디 입력"></td>
-                 <td style="padding: 0px 0px 22px 0px;"><input class="btn btn-default" style="height:42px;" type="button" value="중복확인"/></td>
-               </div>
-            </tr>
 
-            <tr>
-              <div style="width:100%; height:100%;">
-                 <td style="font-size:20px; padding: 0px 0px 22px 0px;">비밀번호</td>
-                 <td style="padding: 0px 0px 22px 0px;"><input type="password" class="form-control" style="width:400px; height:42px;" name="pw" placeholder="비밀번호 입력"></td>
-               </div>
-            </tr>
+<div class="col-sm-10 well" style="margin-top: 40px;" ng-controller="signupCtrl">
+  <form action="/JSP_webapp/signup.mctrl" method="POST">
+    <!--Start of form control -->
+    <div class="col-sm-7">
+      <div class="col-xs-12">
+        <!-- ID Input -->
+        <div class="col-xs-3" style="margin-top: 20px;">
+          <label>ID</label>
+        </div>
+        <div class="col-xs-9" style="margin-top: 20px;">
+          <input type="button" style="width: 30%; float: right;" class="form-control" name="check_overlap" value="중복확인">
+          <input type="text" style="width: 65%; margin-right: 5%;" class="form-control" ng-model="user_id" name="user_id" placeholder="아이디 입력">
+        </div>
 
-            <tr>
-              <div style="width:100%; height:100%;">
-                 <td style="font-size:20px; padding: 0px 0px 22px 0px;">비밀번호 확인</td>
-                 <td style="padding: 0px 0px 22px 0px;"><input type="password" class="form-control" style="width:400px; height:42px;" name="pw2" placeholder="비밀번호 확인"  ></td>
-               </div>
-            </tr>
+        <!-- password input -->
+        <div class="col-xs-3" style="margin-top: 20px;">
+          <label>비밀번호</label>
+        </div>
+        <div class="col-xs-9" style="margin-top: 20px;">
+          <input type="password" class="form-control" name="user_pw" placeholder="비밀번호 입력">
+        </div>
 
-            <tr>
-              <div style="width:100%; height:100%;">
-                 <td style="font-size:20px; padding: 0px 0px 22px 0px;">이름</td>
-                 <td style="padding: 0px 0px 22px 0px;"><input type="text" class="form-control" style="width:400px; height:42px;" name="na" placeholder="이름을 입력 해주세요"></td>
-               </div>
-            </tr>
+        <!-- confirm password input -->
+        <div class="col-xs-3" style="margin-top: 20px;">
+          <label>비밀번호 확인</label>
+        </div>
+        <div class="col-xs-9" style="margin-top: 20px;">
+          <input type="password" class="form-control" name="pw_confirm" placeholder="비밀번호 입력">
+        </div>
 
-            <tr>
-              <div style="width:100%; height:100%;">
-              <td style="font-size:20px; padding: 0px 0px 22px 0px;">성별</td>
-            <td style="font-size:19px; padding: 0px 0px 22px 0px;"><input type="radio" style="width:60px; height:21px;"  name="gender" value="남자" />남자
-            <input type="radio"  style="width:60px; height:21px;" name="gender" value="여자" />여자</td>
-              </div>
-            </tr>
+        <!-- name input -->
+        <div class="col-xs-3" style="margin-top: 20px;">
+          <label>이름</label>
+        </div>
+        <div class="col-xs-9" style="margin-top: 20px;">
+          <input type="text" class="form-control" name="name" placeholder="이름 입력">
+        </div>
 
-            <tr>
-              <div style="width:100%; height:100%;">
-              <td style="font-size:20px; padding: 0px 0px 22px 0px;">생년월일</td>
-              <td style="padding: 0px 0px 22px 0px;"><input type="text" class="form-control" style="width:400px; height:42px;" placeholder="ex.)1990/12/04" name="b"/></td>
-            </div>
-          </tr>
 
-            <tr>
-              <div style="width:100%; height:100%;">
-                <td style="font-size:20px; padding: 0px 0px 22px 0px;">전화번호</td>
-                <td style="padding: 0px 0px 22px 0px;"><input type="text" class="form-control" style="width:400px; height:42px;" placeholder="ex.) 010-1111-1111" name="phone" /></td>
-              </div>
-            </tr>
-
-            <tr>
-            <div style="width:100%; height:100%;">
-               <td style="font-size:20px; padding: 0px 0px 22px 0px;">이메일 주소</td>
-               <td style="padding: 0px 0px 22px 0px;"><input type="email" class="form-control" style="width:400px; height:42px;" name="mail" placeholder="example@domain.com"></td>
-             </div>
-           </tr>
-
-            <tr>
-            <div style="width:100%; height:100%;">
-                <td style="font-size:20px; padding: 0px 0px 22px 0px;">주소</td>
-                <td style="padding: 0px 0px 22px 0px;"><input type="text" class="form-control" style="width:400px; height:42px;" placeholder="동/읍/면/리 입력" name="address" /></td>
-            </tr>
+        <!-- gender input -->
+        <div class="col-xs-3" style="margin-top: 20px;">
+          <label>성별</label>
+        </div>
+        <div class="col-xs-9" style="margin-top: 20px;">
+          <div class="radio">
+            <label class="radio-inline"><input type="radio" name="gender" value="M">남자</label>
           </div>
-        </table>
-    </form>
-  </center>
+          <div class="radio">
+            <label class="radio-inline"><input type="radio" name="gender" value="F">여자</label>
+          </div>
+        </div>
 
-  <center>
-  <input class="btn btn-default" style="margin:10px 0px 15px 325px;" type="submit" value="가입"/>
-  <input class="btn btn-default" style="margin:10px 0px 15px 10px;" type="reset" value="취소"/>
-</center>
-  </div>
+        <!-- birthdate input -->
+        <div class="col-xs-3" style="margin-top: 20px;">
+          <label>생년월일</label>
+        </div>
+        <div class="col-xs-9" style="margin-top: 20px;">
+          <input type="text" class="form-control" name="birthdate" placeholder="ex.) 2000-01-01">
+        </div>
 
-  <div style="margin:45px 0px 0px 0px;">
-  <td><img src="user_pic_logout.PNG" width="180px" height="180px"></td>
-  <td><left><input type="file" name="프로필 사진 추가"></left></td>
+        <!-- phone number input -->
+        <div class="col-xs-3" style="margin-top: 20px;">
+          <label>핸드폰 번호</label>
+        </div>
+        <div class="col-xs-9" style="margin-top: 20px;">
+          <input type="text" class="form-control" name="phoneNo" placeholder="ex.) 01011111111">
+        </div>
+
+        <!-- email input -->
+        <div class="col-xs-3" style="margin-top: 20px;">
+          <label>이메일주소</label>
+        </div>
+        <div class="col-xs-9" style="margin-top: 20px;">
+          <input type="text" class="form-control" name="email" placeholder="ex.) email@domain.com">
+        </div>
+
+        <!-- address input -->
+        <div class="col-xs-3" style="margin-top: 20px;">
+          <label>주소</label>
+        </div>
+        <div class="col-xs-9" style="margin-top: 20px;">
+          <input type="text" class="form-control" name="addr" placeholder="주소입력">
+        </div>
+
+        <!-- submit and cancel -->
+        <div class="col-xs-12" style="text-align: right; margin-top: 20px;">
+          <input type="submit" class="btn btn-success" style="width: 100px; margin-right: 30px;" value="가입하기">
+          <input type="button" class="btn btn-default" style="width: 100px;  float:right;" onclick="moveTo('index.html')" value="취소">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <img src="./public/img/user_pic_logout.PNG" width="180px" height="180px"><br/>
+      <input style="margin-top: 20px;" type="file" name="프로필 사진 추가">
+    </div>
+  </form>
 </div>
