@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.model.BoardDAO;
 
-public class BoardWriteCmd implements BoardCmd{
-	
+
+public class BoardReadCmd implements BoardCmd {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String title = request.getParameter("title");
@@ -15,5 +15,4 @@ public class BoardWriteCmd implements BoardCmd{
 		BoardDAO dao = new BoardDAO();
 		dao.boardWrite(title, contents);
 	}
-	
 }
