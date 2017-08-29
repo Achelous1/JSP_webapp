@@ -9,7 +9,11 @@ public class BoardWriteCmd implements BoardCmd{
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		String title = request.getParameter("title");
+		String contents = request.getParameter("contents");
 		
+		BoardDAO dao = new BoardDAO();
+		dao.boardWrite(title, contents);
 	}
 	
 }

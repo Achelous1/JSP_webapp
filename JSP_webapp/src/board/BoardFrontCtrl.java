@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.command.*;
+import board.command.BoardListCmd;
 import member.command.MemberCmd;
 import member.command.MemberLoginCmd;
 import member.command.MemberSignupCmd;
@@ -26,7 +28,9 @@ public class BoardFrontCtrl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String requestURI = request.getRequestURI();
+		doPost(request, response);
+		
+/*		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String cmdURI = requestURI.substring(contextPath.length());
 		
@@ -43,7 +47,7 @@ public class BoardFrontCtrl extends HttpServlet {
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("reviews.bctrl");
 			rd.forward(request, response);
-		}
+		}*/
 		
 	}
 
@@ -51,7 +55,48 @@ public class BoardFrontCtrl extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		String requestURI = request.getRequestURI();
+		String contextPath = request.getContextPath();
+		String cmdURI = requestURI.substring(contextPath.length());
+		
+		BoardCmd cmd = null;
+		String viewPage = null;
+		
+		//글 목록 조회
+		if(cmdURI.equals("/reviews.bctrl")){
+			cmd = new BoardListCmd();
+			cmd.execute(request, response);
+			viewPage = "reviews.html";
+		}
+		
+		//글 작성 화면 제공
+		if(cmdURI.equals("/boardWrite.bctrl")) {
+			cmd = new BoardWriteCmd();
+			cmd.execute(request, response);
+			viewPage = "boardWrite.html";
+		}
+		
+		//글 작성 처리
+		if(cmdURI.equals("/boardWrite.bctrl")) {
+			cmd = new BoardWriteCmd();
+			cmd.execute(request, response);
+			viewPage = "boardWrite.bctrl";
+		}
+		
+		// 글보기
+		if(cmdURI.equals("/viewBoard.bctrl")) {
+			cmd = new BoardWriteCmd();
+			cmd.execute(request, response);
+			viewPage = "boardWrite.html";
+		}
+		
+		
+		RequestDispatcher dis = request.getRequestDispatcher(viewPage);
+		dis.forward(request, response);
+		
+		
+		//doGet(request, response);
 	}
 
 }

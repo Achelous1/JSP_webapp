@@ -8,13 +8,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.lonely_traveler.variables.DatabaseInfo;
 
-import board.model.BoardDTO;
+import board.model.*;
 
 import java.sql.*;
+import java.util.ArrayList;
 
-@WebServlet("*.bbs")
-public class BoardListCmd extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+//@WebServlet("*.bbs")
+public class BoardListCmd implements BoardCmd {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		BoardDAO dao = new BoardDAO();
+		ArrayList<BoardDTO> list;
+		
+		int pageCnt = 0;
+		String curPage = request.getParameter("curPage");
+		
+		if(curPage == null) curPage = "1";
+		
+		list = dao.boardList(curPage);
+		
+		request.setAttribute("boardList", list);
+		
+		pageCnt = dao.boardPageCnt();
+		request.setAttribute("pageCnt", pageCnt);
+	}
+	/*private static final long serialVersionUID = 1L;
        
     public BoardListCmd() {
         super();
@@ -57,6 +77,6 @@ public class BoardListCmd extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-	}
+	}*/
 
 }
