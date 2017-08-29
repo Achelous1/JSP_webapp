@@ -3,16 +3,17 @@ package board.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.model.BoardDAO;
+import board.command.BoardCmd;
+import board.model.*;
 
 
 public class BoardReadCmd implements BoardCmd {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String title = request.getParameter("title");
-		String contents = request.getParameter("contents");
-		
+		String inputBoard_no = request.getParameter("board_no");
 		BoardDAO dao = new BoardDAO();
-		dao.boardWrite(title, contents);
+		BoardDTO writing = dao.boardRead(inputBoard_no);
+		
+		request.setAttribute("boardRead", writing);
 	}
 }

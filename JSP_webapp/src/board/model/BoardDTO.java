@@ -10,6 +10,11 @@ public class BoardDTO {
 	private String contents;
 	private String img;
 	private Date post_date;
+	private int ref;
+	private int step;
+	private int lev;
+	private int read_cnt;
+	private int child_cnt;
 	
 	public int getBoard_no() {
 		return board_no;
@@ -52,6 +57,35 @@ public class BoardDTO {
 	}
 	public void setPost_date(Date post_date) {
 		this.post_date = post_date;
+	}public int getRef() {
+		return ref;
+	}
+	public void setRef(int ref) {
+		this.ref = ref;
+	}
+	public int getStep() {
+		return step;
+	}
+	public void setStep(int step) {
+		this.step = step;
+	}
+	public int getLev() {
+		return lev;
+	}
+	public void setLev(int lev) {
+		this.lev = lev;
+	}
+	public int getRead_cnt() {
+		return read_cnt;
+	}
+	public void setRead_cnt(int read_cnt) {
+		this.read_cnt = read_cnt;
+	}
+	public int getChild_cnt() {
+		return child_cnt;
+	}
+	public void setChild_cnt(int child_cnt) {
+		this.child_cnt = child_cnt;
 	}
 
 	

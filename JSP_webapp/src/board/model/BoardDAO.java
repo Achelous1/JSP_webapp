@@ -1,4 +1,4 @@
-package board;
+package board.model;
 
 
 import java.sql.*;
@@ -51,8 +51,8 @@ public class BoardDAO {
 				int ref = rs.getInt("ref");
 				int step = rs.getInt("step");
 				int lev = rs.getInt("lev");
-				int readCnt = rs.getInt("readCnt");
-				int childCnt = rs.getInt("childCnt");
+				int read_cnt = rs.getInt("readCnt");
+				int child_cnt = rs.getInt("childCnt");
 				
 				BoardDTO writing = new BoardDTO();
 				writing.setBoard_no(board_no);
@@ -61,9 +61,9 @@ public class BoardDAO {
 				writing.setPost_date(post_date);
 				writing.setRef(ref);
 				writing.setStep(step);
-				writing.setlev(lev);
-				writing.setReadCnt(readCnt);
-				writing.setChildCnt(childCnt);
+				writing.setLev(lev);
+				writing.setRead_cnt(read_cnt);
+				writing.setChild_cnt(child_cnt);
 				
 				list.add(writing);
 			}
@@ -117,7 +117,7 @@ public class BoardDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int board_no = 1;
+		int num = 1;
 		
 		try {
 			conn = ds.getConnection();
@@ -126,16 +126,16 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				board_no= rs.getInt("board_no");
+				num= rs.getInt("board_no");
 			}
 			
 			sql = "INSERT INTO BOARD (BOARD_NO, TITLE, CONTENTS, POST_DATE, ref, step, lev, read_cnt, child_cnt) values(?, ?, ?, curdate(), ?, 0, 0, 0, 0)";
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, board_no);
+			pstmt.setInt(1, num);
 			pstmt.setString(2, title);
 			pstmt.setString(3, contents);
-			pstmt.setInt(4, board_no);
+			pstmt.setInt(4, num);
 			
 			pstmt.executeUpdate();
 		}catch(Exception e) {
@@ -183,9 +183,9 @@ public class BoardDAO {
 				writing.setPost_date(post_date);
 				writing.setRef(ref);
 				writing.setStep(step);
-				writing.setlev(lev);
-				writing.setReadCnt(read_cnt);
-				writing.setChildCnt(child_cnt);
+				writing.setLev(lev);
+				writing.setRead_cnt(read_cnt);
+				writing.setChild_cnt(child_cnt);
 			}
 		}catch(Exception e) {
 				e.printStackTrace();
