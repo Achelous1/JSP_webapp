@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <h1>회원가입</h1>
 
 <div class="col-sm-10 well" style="margin-top: 40px;" ng-controller="signupCtrl">
@@ -19,7 +21,7 @@
           <label>비밀번호</label>
         </div>
         <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="password" class="form-control" name="user_pw" placeholder="비밀번호 입력">
+          <input type="password" class="form-control" name="user_pw" placeholder="비밀번호 입력" required>
         </div>
 
         <!-- confirm password input -->
@@ -27,7 +29,7 @@
           <label>비밀번호 확인</label>
         </div>
         <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="password" class="form-control" name="pw_confirm" placeholder="비밀번호 입력">
+          <input type="password" class="form-control" name="pw_confirm" placeholder="비밀번호 입력" required>
         </div>
 
         <!-- name input -->
@@ -35,7 +37,7 @@
           <label>이름</label>
         </div>
         <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="text" class="form-control" name="name" placeholder="이름 입력">
+          <input type="text" class="form-control" name="name" placeholder="이름 입력" required>
         </div>
 
 
@@ -45,10 +47,10 @@
         </div>
         <div class="col-xs-9" style="margin-top: 20px;">
           <div class="radio">
-            <label class="radio-inline"><input type="radio" name="gender" value="M">남자</label>
+            <label class="radio-inline"><input type="radio" name="gender" value="M" required>남자</label>
           </div>
           <div class="radio">
-            <label class="radio-inline"><input type="radio" name="gender" value="F">여자</label>
+            <label class="radio-inline"><input type="radio" name="gender" value="F" required>여자</label>
           </div>
         </div>
 
@@ -57,7 +59,7 @@
           <label>생년월일</label>
         </div>
         <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="text" class="form-control" name="birthdate" placeholder="ex.) 2000-01-01">
+          <input type="text" class="form-control" name="birthdate" placeholder="ex.) 2000-01-01" required>
         </div>
 
         <!-- phone number input -->
@@ -65,7 +67,7 @@
           <label>핸드폰 번호</label>
         </div>
         <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="text" class="form-control" name="phoneNo" placeholder="ex.) 01011111111">
+          <input type="text" class="form-control" name="phoneNo" placeholder="ex.) 010-1111-1111" required>
         </div>
 
         <!-- email input -->
@@ -73,7 +75,7 @@
           <label>이메일주소</label>
         </div>
         <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="text" class="form-control" name="email" placeholder="ex.) email@domain.com">
+          <input type="email" class="form-control" name="email" placeholder="ex.) email@domain.com" required>
         </div>
 
         <!-- address input -->
@@ -81,7 +83,7 @@
           <label>주소</label>
         </div>
         <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="text" class="form-control" name="addr" placeholder="주소입력">
+          <input type="text" class="form-control" name="addr" placeholder="주소입력" required>
         </div>
 
         <!-- submit and cancel -->

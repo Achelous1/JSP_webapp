@@ -6,6 +6,7 @@ import java.util.Calendar;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.sql.DataSource;
 
 import board.model.BoardDTO;
@@ -27,7 +28,7 @@ public class MemberDAO {
 	
 	//getting member data from db
 	
-	public MemberDTO checkLogin(String id, String pw){
+	public MemberDTO checkLogin(String user_id, String user_pw){
 		MemberDTO mem = new MemberDTO();
 		
 		Connection conn = null;
@@ -36,28 +37,40 @@ public class MemberDAO {
 		
 		
 		try {
-			String sql = "SELECT MEM_ID, MEM_PW FROM MEMBERS WHERE MEM_ID = ? AND MEM_PW = ?;";
+			String sql = " SELECT MEM_ID, MEM_PW FROM MEMBERS WHERE MEM_ID = ? AND MEM_PW = ? ";
 			
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
+			pstmt.setString(1, user_id);
+			pstmt.setString(2, user_pw);
 			
 			rs = pstmt.executeQuery();
 			
+			System.out.println(rs);
+			
 			while(rs.next()) {
-				mem.setMem_id( rs.getString("mem_id") );
-				mem.setMem_pw( rs.getString("mem_pw") );
-				
-				System.out.println(mem.getMem_id() + "logged in.");
+				mem.setMem_id(rs.getString("mem_id"));
+				mem.setMem_pw(rs.getString("mem_pw"));
 			}
+			System.out.println(mem.getMem_id() + " " + mem.getMem_pw() + " logged in.");
+			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null)
+					conn.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(rs != null)
+					rs.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 
-		return mem;		
-		
+		return mem;
 	}
 	
 	public void signUp(MemberDTO mem) throws Exception{

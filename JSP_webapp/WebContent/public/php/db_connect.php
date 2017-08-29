@@ -10,5 +10,5 @@ $conn = new oci_connect($username, $password, $servername);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo "Connected successfully";
+echo "<script>console.log('Connected successfully');</script>";
 ?>

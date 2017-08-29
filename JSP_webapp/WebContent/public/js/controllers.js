@@ -1,17 +1,38 @@
 //login controller
-app.controller('mainCtrl', function ($scope, $http) {
-    $scope.login = function (result) {
-    //     $http({
-    //         method: 'POST',
-    //         url: './public/js/sign_in.php'
-    //     }).success(function () {
-    //         alert("successfully logged in");
-    //     }).error(function () {
-    //         alert("something went wrong");
-    //     });
-        alert("login!");
-    };
-});
+app.controller('mainCtrl', function ($scope, $http, $modal) {
+    $rootScope.isLoggedIn = false;
+    $scope.login = function () {
+        var encodedString = 'user_id=' +
+        encodeURIComponent(this.inputData.user_id) +
+        '&user_pw=' +
+        encodeURIComponent(this.inputData.user_pw);
+
+        $http({
+            method: 'POST',
+            url: '/login.mctrl',
+            data: encodedString,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function loginSuccess(response) {
+            alert("successfully logged in");
+            $rootScope.isLoggedIn = true;
+            $modal.close();
+        }, function loginError(response) {
+            alert("failed in logging in");
+        });
+    }
+
+    $scope.logout = function() {
+        $http({
+            method: 'POST',
+            url: './public/js/logout.php'
+        }).then(function logoutSuccess(response) {
+            $rootScope.isLoggedIn = false;
+        }, function logoutError(response) {
+            alert("something went wrong");
+        });
+    }
+})
+
 
 //recommendations board control
 app.controller('recommendationCtrl', function ($scope, $http) {
@@ -90,3 +111,4 @@ app.controller('matchListCtrl', function ($scope, $http) {
     //get list from JSON
     $scope.list = listJSON;
 });
+

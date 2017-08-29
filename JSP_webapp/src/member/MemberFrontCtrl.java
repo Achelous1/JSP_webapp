@@ -43,13 +43,13 @@ public class MemberFrontCtrl extends HttpServlet {
 				
 				//회원가입 성공 시 status 200 전송
 				response.setStatus(200);
-				RequestDispatcher rd = request.getRequestDispatcher("index.html");
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 				rd.forward(request, response);
 			} catch(Exception e) {
 				//예외발생 시 status 500 전송
 				response.setStatus(500);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("index.html#!/signup");
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp#!/signup");
 				rd.forward(request, response);
 			}
 		//로그인을 했을 경우
@@ -61,11 +61,11 @@ public class MemberFrontCtrl extends HttpServlet {
 				// TODO Auto-generated catch block
 				response.setStatus(500);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("#");
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 				rd.forward(request, response);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("#");
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}
 	}

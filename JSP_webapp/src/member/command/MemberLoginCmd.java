@@ -3,7 +3,7 @@ package member.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.model.MemberDAO;
+import member.model.*;
 
 public class MemberLoginCmd implements MemberCmd{
 
@@ -13,8 +13,11 @@ public class MemberLoginCmd implements MemberCmd{
 		String pw = request.getParameter("user_pw");
 		
 		MemberDAO mem = new MemberDAO();
+		MemberDTO memInfo = new MemberDTO();
 		
-		mem.checkLogin(id, pw);
+		memInfo = mem.checkLogin(id, pw);
+		
+		request.setAttribute("memInfo", memInfo);
 	}
 
 }

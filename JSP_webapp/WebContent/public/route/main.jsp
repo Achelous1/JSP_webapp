@@ -1,4 +1,6 @@
-<h3 style="color: rgb(133,133,133);">여행 일정</h3>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<h3 style="color: rgb(133,133,133);">여행일정</h3>
 <div id="Menu" class="col-sm-10">
 	<form action="" method="post">
 		<div class="form-group row">

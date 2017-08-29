@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <div class="container">
 <table class="table table-default">
     <thead>
@@ -12,8 +14,8 @@
             <tr>
               <th></th>
               <td>
-                <input type="radio" name="name" value="review">후기
-                <input type="radio" name="name" value="recommendation">추천여행지
+                <input type="radio" name="name" value="rev">후기
+                <input type="radio" name="name" value="rec">추천여행지
                 <select name='job' size='1'>
                   <option value=''>나의 여행지</option>
                   <option value='17/10/18~17/10/20'>17/10/18~17/10/20</option>

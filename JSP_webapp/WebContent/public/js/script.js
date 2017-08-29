@@ -4,47 +4,47 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
   $routeProvider
   //route to main page
   .when('/', {
-      templateUrl: './public/route/main.html',
+      templateUrl: './public/route/main.jsp',
       controller: 'mainCtrl'
   })
   //route to matching list
   .when('/myMatchList.cbs', {
-      templateUrl: './public/route/myMatchList.html',
+      templateUrl: './public/route/myMatchList.jsp',
       controller : 'matchListCtrl'
   })
   //route to chatting room
   .when('/myMatchList.cbs/talkStranger', {
-      templateUrl: './public/route/talkStranger.html',
+      templateUrl: './public/route/talkStranger.jsp',
       controller : 'chatCtrl'
   })
   //route to recommendations board
   .when('/recommendations.bctrl', {
-      templateUrl: './public/route/recommendations.html',
+      templateUrl: './public/route/recommendations.jsp',
       controller : 'recommendationCtrl'
   })
   //route to reviews board
   .when('/reviews.bctrl', {
-      templateUrl: './public/route/reviews.html',
+      templateUrl: './public/route/reviews.jsp',
       controller : 'reviewsCtrl'
   })
   //route to sign up page
   .when('/signup', {
-      templateUrl: './public/route/signup.html',
+      templateUrl: './public/route/signup.jsp',
       controller : 'signupCtrl'
   })
   //route to board write page
   .when('/boardWrite.bctrl', {
-      templateUrl: './public/route/boardWrite.html',
+      templateUrl: './public/route/boardWrite.jsp',
       controller : 'writeCtrl'
   })
   //route to my page
   .when('/myPage', {
-      templateUrl: './public/route/myPage.html',
+      templateUrl: './public/route/myPage.jsp',
       controller : 'myPageCtrl'
   })
   //route to board content page
   .when('/viewBoard', {
-      templateUrl: './public/route/viewBoard.html',
+      templateUrl: './public/route/viewBoard.jsp',
       controller : 'viewContentsCtrl'
   })
   //route back to main otherwise
@@ -71,15 +71,16 @@ function moveTo(url){
 }
 
 //alert modal
-var modalInstance = $modal.open({
-    controller: ModalInstanceCtrl,
-    backdrop: true,
-    keyboard: true,
-    backdropClick: true,
-    size: 'lg',
-    resolve: {
-      data: function () {
-        return $scope.data;
-      }
-    }
-  });
+// var modalInstance = $modal.open({
+//     controller: ModalInstanceCtrl,
+//     backdrop: true,
+//     keyboard: true,
+//     backdropClick: true,
+//     size: 'lg',
+//     resolve: {
+//       data: function () {
+//         return $scope.data;
+//       }
+//     }
+//   });
+

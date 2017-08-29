@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
       <div class="col-sm-9">
         <h1>ooo님과의 대화</h1>
         <ul class="list-group">
