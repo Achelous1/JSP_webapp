@@ -47,6 +47,9 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
       templateUrl: './public/route/viewBoard.jsp',
       controller : 'viewContentsCtrl'
   })
+  .when('/setSession', {
+      templateUrl: './public/php/SessionAttributeSet.jsp'
+  })
   //route back to main otherwise
   .otherwise({
     redirectTo: '/'

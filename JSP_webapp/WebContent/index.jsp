@@ -37,7 +37,7 @@
           <li><a href="#!/">여행동반자 찾기</a></li>
           <li><a href="#!/myMatchList.cbs">My 매칭리스트</a></li>
           <li><a href="#!/reviews.bctrl">이용후기</a></li>
-          <li><a href="#!/recommendations.bctrl">추천여행지</a></li>
+          <li><a href="#!/recommendations.bctrl">추천여행지</a></li>
         </ul>
       </nav>
 
@@ -47,15 +47,24 @@
         <div class="row" style="text-align: right; height: 50px; padding-top: 10px; padding-right: 20px;">
           <!-- dropdown -->
           <div class="dropdown">
-            <input type="button" ng-show="!isLoggedIn" class="btn btn-default" style="float: right;" value="로그인/회원가입" data-toggle="modal" data-target="#logIn">
-            <input ng-show="isLoggedIn" type="button" class="btn btn-default" style="float: right;" value="마이페이지" ng-click="logout()">
-            <input ng-show="isLoggedIn" type="button" class="btn btn-default" style="float: right;" data-toggle="dropdown" value="로그아웃">
+          <%
+          	if(session.getAttribute("user_id") == null){
+          %>
+            <input type="button" class="btn btn-default" style="float: right;" value="로그인/회원가입" data-toggle="modal" data-target="#logIn">
+           <%
+          	} else if(session.getAttribute("user_id") != null){
+           %>
+            <a href="./public/php/SessionQuit.jsp" class="btn btn-default" style="float: right;">로그아웃</a>
+            <input type="button" class="btn btn-default" style="float: right;" data-toggle="dropdown" value="마이페이지">
             <ul class="dropdown-menu dropdown-menu-right" style="position: absolute; z-index: 1; margin-right: 20px; margin-top: 30px;">
               <li><a href="#!/myPage">마이페이지</a></li>
               <li class="divider"></li>
               <li><a href="#!/myMatchList.cbs">마이매칭리스트</a></li>
             </ul>
-            <p ng-show="isLoggedIn" style="float:right; margin-top: 10px; margin-right: 30px;">어서오세요. <strong>{{ user.name }}</strong>님</p>
+            <p style="float:right; margin-top: 10px; margin-right: 30px;">어서오세요. <strong>[<%= session.getAttribute("user_name") %>]</strong>님</p>
+           <%
+            }
+           %>
           </div>
         </div>
         <!-- 조원코딩구간 -->
@@ -75,7 +84,7 @@
         </div>
         <div class="modal-body">
           <!--form action for login -->
-          <form ng-submit="login()">
+          <form action="login.mctrl" method="post">
             <div class="form-group">
               <label for="user_id">ID:</label>
               <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Enter ID">

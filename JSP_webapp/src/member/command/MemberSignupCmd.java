@@ -11,7 +11,7 @@ import member.model.MemberDTO;
 public class MemberSignupCmd implements MemberCmd{
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		MemberDTO data = new MemberDTO();
 		

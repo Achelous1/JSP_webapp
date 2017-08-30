@@ -37,7 +37,7 @@ public class MemberDAO {
 		
 		
 		try {
-			String sql = " SELECT MEM_ID, MEM_PW FROM MEMBERS WHERE MEM_ID = ? AND MEM_PW = ? ";
+			String sql = " SELECT MEM_NO, MEM_ID, MEM_PW, MEM_NAME FROM MEMBERS WHERE MEM_ID = ? AND MEM_PW = ? ";
 			
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -52,6 +52,8 @@ public class MemberDAO {
 			while(rs.next()) {
 				mem.setMem_id(rs.getString("mem_id"));
 				mem.setMem_pw(rs.getString("mem_pw"));
+				mem.setMem_name(rs.getString("mem_name"));
+				mem.setMem_no(rs.getInt("mem_no"));
 			}
 			System.out.println(mem.getMem_id() + " " + mem.getMem_pw() + " logged in.");
 			
@@ -73,7 +75,7 @@ public class MemberDAO {
 		return mem;
 	}
 	
-	public void signUp(MemberDTO mem) throws Exception{
+	public void signUp(MemberDTO mem){
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -99,7 +101,9 @@ public class MemberDAO {
 			
 			
 			pstmt.executeUpdate();
-		} finally {
+		} catch(Exception e){
+			e.printStackTrace();
+		}finally {
 			try {
 				if(conn != null)
 					conn.close();

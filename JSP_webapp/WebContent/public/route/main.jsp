@@ -66,7 +66,7 @@
 </div>
 
 <div style="padding: 30px;" id="main_social" class="col-sm-3">
-	<div style="box-shadow: 3px 3px 3px rgba(133,133,133,0.60);" >
+	<div style="box-shadow: 3px 3px 3px rgba(133,133,133,0.60); margin-bottom: 20px;" >
 		<a class="twitter-timeline" data-lang="ko" data-width="250" data-height="300" data-dnt="true" data-theme="light" data-link-color="#E81C4F" href="https://twitter.com/LonelyTravele10">Tweets by LonelyTravele10</a> 
 		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</div>

@@ -31,14 +31,17 @@ public class MemberFrontCtrl extends HttpServlet {
 		String cmdURI = requestURI.substring(contextPath.length());
 		
 		System.out.println(cmdURI);
+		System.out.println(contextPath);
 		System.out.println(request.getParameter("user_id"));
 		
 		//회원가입 했을 경구
 		if(cmdURI.equals("/signup.mctrl")) {
 			MemberCmd cmd = new MemberSignupCmd();
 			
+			cmd.execute(request, response);
+			
 			//try-catch문으로 status코드 전송
-			try {
+			/*try {
 				cmd.execute(request, response);
 				
 				//회원가입 성공 시 status 200 전송
@@ -51,21 +54,15 @@ public class MemberFrontCtrl extends HttpServlet {
 				
 				RequestDispatcher rd = request.getRequestDispatcher("index.jsp#!/signup");
 				rd.forward(request, response);
-			}
+			}*/
+			RequestDispatcher rd = request.getRequestDispatcher("index.html");
+			rd.forward(request, response);
 		//로그인을 했을 경우
 		}else if(cmdURI.equals("/login.mctrl")) {
 			MemberCmd cmd = new MemberLoginCmd();
-			try {
-				cmd.execute(request, response);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				response.setStatus(500);
-				
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-				rd.forward(request, response);
-			}
+			cmd.execute(request, response);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("public/php/SessionAttributeSet.jsp");
 			rd.forward(request, response);
 		}
 	}
