@@ -67,28 +67,28 @@ public class BoardFrontCtrl extends HttpServlet {
 		if(cmdURI.equals("/reviews.bctrl")){
 			cmd = new BoardListCmd();
 			cmd.execute(request, response);
-			viewPage = "reviews.html";
+			viewPage = "reviews.jsp";
 		}
 		
 		//글 작성 화면 제공
 		if(cmdURI.equals("/boardWrite.bctrl")) {
 			cmd = new BoardWriteCmd();
 			cmd.execute(request, response);
-			viewPage = "boardWrite.html";
+			viewPage = "boardWrite.bctrl";
 		}
 		
 		//글 작성 처리
 		if(cmdURI.equals("/boardWrite.bctrl")) {
 			cmd = new BoardWriteCmd();
 			cmd.execute(request, response);
-			viewPage = "boardWrite.bctrl";
+			viewPage = "boardWrite.jsp";
 		}
 		
 		// 글보기
 		if(cmdURI.equals("/viewBoard.bctrl")) {
 			cmd = new BoardWriteCmd();
 			cmd.execute(request, response);
-			viewPage = "boardWrite.html";
+			viewPage = "viewBoard.jsp";
 		}
 		
 		

@@ -45,6 +45,7 @@ public class BoardDAO {
 			while(rs.next()) {
 				
 				int board_no = rs.getInt("board_no");
+				String mem_no = rs.getString("mem_no");
 				String title = rs.getString("title");
 				String contents = rs.getString("contents");
 				Date post_date = rs.getDate("post_date");
@@ -56,6 +57,7 @@ public class BoardDAO {
 				
 				BoardDTO writing = new BoardDTO();
 				writing.setBoard_no(board_no);
+				writing.setMem_no(mem_no);
 				writing.setTitle(title);
 				writing.setContents(contents);
 				writing.setPost_date(post_date);
@@ -113,11 +115,11 @@ public class BoardDAO {
 	}
 	
 	//게시글 등록 기능
-	public void boardWrite (String title, String contents){
+	public void boardWrite (String mem_no, String title, String contents){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int num = 1;
+		int board_no = 1;
 		
 		try {
 			conn = ds.getConnection();
@@ -126,16 +128,17 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				num= rs.getInt("board_no");
+				board_no= rs.getInt("board_no");
 			}
 			
-			sql = "INSERT INTO BOARD (BOARD_NO, TITLE, CONTENTS, POST_DATE, ref, step, lev, read_cnt, child_cnt) values(?, ?, ?, curdate(), ?, 0, 0, 0, 0)";
+			sql = "INSERT INTO BOARD (BOARD_NO, MEM_NO, TITLE, CONTENTS, POST_DATE, ref, step, lev, read_cnt, child_cnt) VALUES (?, ?, ?, ?, curdate(), ?, 0, 0, 0, 0) ";
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, num);
-			pstmt.setString(2, title);
-			pstmt.setString(3, contents);
-			pstmt.setInt(4, num);
+			pstmt.setInt(1, board_no);
+			pstmt.setString(2, mem_no);
+			pstmt.setString(3, title);
+			pstmt.setString(4, contents);
+			pstmt.setInt(5, board_no);
 			
 			pstmt.executeUpdate();
 		}catch(Exception e) {
@@ -168,6 +171,7 @@ public class BoardDAO {
 			
 			if(rs.next()) {
 				int board_no = rs.getInt("board_no");
+				String mem_no = rs.getString("mem_no");
 				String title = rs.getString("title");
 				String contents = rs.getString("contents");
 				Date post_date = rs.getDate("post_date");
@@ -178,6 +182,7 @@ public class BoardDAO {
 				int child_cnt = rs.getInt("child_cnt");
 				
 				writing.setBoard_no(board_no);
+				writing.setMem_no(mem_no);
 				writing.setTitle(title);
 				writing.setContents(contents);
 				writing.setPost_date(post_date);

@@ -4,8 +4,8 @@ import java.sql.Date;
 
 public class BoardDTO {
 	private int board_no;
-	private int mem_no;
-	private String cont_type;
+	private String mem_no;
+	//private String cont_type;
 	private String title;
 	private String contents;
 	private String img;
@@ -22,18 +22,18 @@ public class BoardDTO {
 	public void setBoard_no(int board_no) {
 		this.board_no = board_no;
 	}
-	public int getMem_no() {
+	public String getMem_no() {
 		return mem_no;
 	}
-	public void setMem_no(int mem_no) {
+	public void setMem_no(String mem_no) {
 		this.mem_no = mem_no;
 	}
-	public String getCont_type() {
+	/*public String getCont_type() {
 		return cont_type;
 	}
 	public void setCont_type(String cont_type) {
 		this.cont_type = cont_type;
-	}
+	}*/
 	public String getTitle() {
 		return title;
 	}
