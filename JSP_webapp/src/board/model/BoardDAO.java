@@ -14,7 +14,7 @@ public class BoardDAO {
 	
 	public BoardDAO(){
 		try{
-			Context initContext = (Context)new InitialContext().lookup("comp/env/");
+			Context initContext = (Context)new InitialContext().lookup("java:comp/env/");
 			ds = (DataSource)initContext.lookup("jdbc/Oracle11g");
 			
 		}catch(Exception e){
@@ -23,8 +23,8 @@ public class BoardDAO {
 		
 	}
 	
-	//°Ô½ÃÆÇ ¸ñ·Ï Á¶È¸ ±â´É
-	public ArrayList<BoardDTO> boardList(String curPage){ //ÇöÀç Ç¥½ÃÇÒ ÆäÀÌÁö ¹Ş¾Æ¿È = curPage
+	//ê²Œì‹œíŒ ëª©ë¡ ì¡°íšŒ ê¸°ëŠ¥
+	public ArrayList<BoardDTO> boardList(String curPage){ //í˜„ì¬ í‘œì‹œí•  í˜ì´ì§€ ë°›ì•„ì˜´ = curPage
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 		
 		Connection conn = null;
@@ -34,7 +34,7 @@ public class BoardDAO {
 		try{
 			conn = ds.getConnection();
 			String sql = "SELECT BOARD_NO, TITLE, CONTENTS, POST_DATE, ref, step, lev, read_cnt, child_cnt FROM BOARD ORDER BY ref, step, lev, read_cnt, child_cnt LIMIT ?, ?";
-			//µğºñÅ×ÀÌºí Á¶È¸ -µğºñ ¼öÁ¤ÇÊ¿äÇÔ// ref, stepÀº ÀÌÈÄ ´äº¯±Û Ã³¸®ÇÏ±â À§ÇÑ ÄÃ·³//LIMIT [½ÃÀÛ¹øÈ£], [Ãâ·Â¹üÀ§]
+			//ë””ë¹„í…Œì´ë¸” ì¡°íšŒ -ë””ë¹„ ìˆ˜ì •í•„ìš”í•¨// ref, stepì€ ì´í›„ ë‹µë³€ê¸€ ì²˜ë¦¬í•˜ê¸° ìœ„í•œ ì»¬ëŸ¼//LIMIT [ì‹œì‘ë²ˆí˜¸], [ì¶œë ¥ë²”ìœ„]
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, WRITING_PER_PAGE * (Integer.parseInt(curPage)));
@@ -45,6 +45,7 @@ public class BoardDAO {
 			while(rs.next()) {
 				
 				int board_no = rs.getInt("board_no");
+				String mem_no = rs.getString("mem_no");
 				String title = rs.getString("title");
 				String contents = rs.getString("contents");
 				Date post_date = rs.getDate("post_date");
@@ -56,6 +57,7 @@ public class BoardDAO {
 				
 				BoardDTO writing = new BoardDTO();
 				writing.setBoard_no(board_no);
+				writing.setMem_no(mem_no);
 				writing.setTitle(title);
 				writing.setContents(contents);
 				writing.setPost_date(post_date);
@@ -81,7 +83,7 @@ public class BoardDAO {
 		return list;
 	}
 	
-	//°Ô½ÃÆÇ ÆäÀÌÂ¡ Ã³¸®
+	//ê²Œì‹œíŒ í˜ì´ì§• ì²˜ë¦¬
 	public int boardPageCnt(){
 		int pageCnt = 0;
 		
@@ -112,37 +114,28 @@ public class BoardDAO {
 		return pageCnt;
 	}
 	
-	//°Ô½Ã±Û µî·Ï ±â´É
-	public void boardWrite (String title, String contents){
+	//ê²Œì‹œê¸€ ë“±ë¡ ê¸°ëŠ¥
+	public void boardWrite (String mem_no, String title, String contents){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int num = 1;
 		
-		try {
+		System.out.println(mem_no + title + contents);
+		
+		try {															/*String sql = "INSERT INTO BOARD (BOARD_NO) VALUES (BOARDNO_SEQUENSE.NEXTVAL) "; //ê²Œì‹œê¸€ ì¤‘ ê°€ì¥ ë†’ì€ ë²ˆí˜¸ì— +1 ê²Œì‹œê¸€ í•˜ë‚˜ë„ ì—†ìœ¼ë©´ 0ì— +1í•œ ê°’ì„ ë„£ìŒpstmt = conn.prepareStatement(sql);	rs = pstmt.executeQuery(); if(rs.next()) {board_no= rs.getInt("board_no");}*/			
+			String sql = "INSERT INTO BOARD (BOARD_NO, MEM_NO, TITLE, CONTENTS, POST_DATE, ref, step, lev, read_cnt, child_cnt)\r\n "+
+			" VALUES (BOARDNO_SEQUENCE.NEXTVAL, ?, ?, ?, SYSDATE, BOARDNO_SEQUENCE.CURRVAL, 0, 0, 0, 0) ";
 			conn = ds.getConnection();
-			String sql = "SELECT IFNULL(MAX(BOARD_NO), 0) +1 AS BOARD_NO FROM BOARD"; //°Ô½Ã±Û Áß °¡Àå ³ôÀº ¹øÈ£¿¡ +1 °Ô½Ã±Û ÇÏ³ªµµ ¾øÀ¸¸é 0¿¡ +1ÇÑ °ªÀ» ³ÖÀ½
 			pstmt = conn.prepareStatement(sql);			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				num= rs.getInt("board_no");
-			}
-			
-			sql = "INSERT INTO BOARD (BOARD_NO, TITLE, CONTENTS, POST_DATE, ref, step, lev, read_cnt, child_cnt) values(?, ?, ?, curdate(), ?, 0, 0, 0, 0)";
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, num);
+																				/*pstmt = conn.prepareStatement(sql);	pstmt.setInt(1, board_no);*/
+			pstmt.setString(1, mem_no);
 			pstmt.setString(2, title);
 			pstmt.setString(3, contents);
-			pstmt.setInt(4, num);
 			
-			pstmt.executeUpdate();
+			int n = pstmt.executeUpdate();
 		}catch(Exception e) {
 				e.printStackTrace();
 		}finally {
 			try {
-				if(rs !=null) rs.close();
 				if(pstmt !=null) pstmt.close();
 				if(conn !=null) conn.close();
 			}catch(SQLException e) {
@@ -151,7 +144,7 @@ public class BoardDAO {
 		}
 	}
 	
-	//°Ô½ÃÆÇ ¿­¶÷
+	//ê²Œì‹œíŒ ì—´ëŒ
 	public BoardDTO boardRead(String inputBoard_no){
 		BoardDTO writing = new BoardDTO();
 		
@@ -168,6 +161,7 @@ public class BoardDAO {
 			
 			if(rs.next()) {
 				int board_no = rs.getInt("board_no");
+				String mem_no = rs.getString("mem_no");
 				String title = rs.getString("title");
 				String contents = rs.getString("contents");
 				Date post_date = rs.getDate("post_date");
@@ -178,6 +172,7 @@ public class BoardDAO {
 				int child_cnt = rs.getInt("child_cnt");
 				
 				writing.setBoard_no(board_no);
+				writing.setMem_no(mem_no);
 				writing.setTitle(title);
 				writing.setContents(contents);
 				writing.setPost_date(post_date);
@@ -201,57 +196,57 @@ public class BoardDAO {
 		return writing;
 	}
 	
-	//°Ô½Ã±Û ¼öÁ¤
+	//ê²Œì‹œê¸€ ìˆ˜ì •
 	public void boardUpdate (String inputBoard_no, String inputTitle, String inputContent){
 		
 	}
 	
-	//°Ô½Ã±Û ¼öÁ¤¿¡ ÇÊ¿äÇÑ ¿ø±Û µ¥ÀÌÅÍ Á¶È¸
+	//ê²Œì‹œê¸€ ìˆ˜ì •ì— í•„ìš”í•œ ì›ê¸€ ë°ì´í„° ì¡°íšŒ
 	public BoardDTO boardUpdateForm(String inputBoard_no){
 		BoardDTO writing = new BoardDTO();
 		return writing;
 	}
 	
-	//°Ô½Ã±Û »èÁ¦ ±â´É
+	//ê²Œì‹œê¸€ ì‚­ì œ ê¸°ëŠ¥
 	public void boardDelete(String inputBoard_no){
 		
 	}
 	
-	//»èÁ¦´ë»óÀÎ °Ô½Ã±Û¿¡ ´ä±ÛÀ¯¹« °Ë»ç
+	//ì‚­ì œëŒ€ìƒì¸ ê²Œì‹œê¸€ì— ë‹µê¸€ìœ ë¬´ ê²€ì‚¬
 	public boolean boardReplyCheck(String inputBoard_no){
 		boolean replyCheck = false;
 		return replyCheck;
 	}
 	
-	//°Ô½Ã±ÛÀÌ ´ä±ÛÀÎ °æ¿ì, ¿ø±ÛµéÀÇ ´ä±Û °³¼ö¸¦ ÁÙ¿©ÁÖ´Â ±â´É
+	//ê²Œì‹œê¸€ì´ ë‹µê¸€ì¸ ê²½ìš°, ì›ê¸€ë“¤ì˜ ë‹µê¸€ ê°œìˆ˜ë¥¼ ì¤„ì—¬ì£¼ëŠ” ê¸°ëŠ¥
 	public void boardDeleteChildCntUpdate(int ref, int lev, int step){
 		
 	}
 	
-	//°Ë»ö±â´É
+	//ê²€ìƒ‰ê¸°ëŠ¥
 	public ArrayList<BoardDTO> boardSearch(String searchOption, String searchWord){
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 		return list;
 	}
 	
-	//´ä±Û ÀÛ¼º¿¡ ÇÊ¿äÇÑ ¿ø±Û µ¥ÀÌÅÍ
+	//ë‹µê¸€ ì‘ì„±ì— í•„ìš”í•œ ì›ê¸€ ë°ì´í„°
 	public BoardDTO boardReplyForm(String inputBoard_no){
 		BoardDTO writing = new BoardDTO();
 		return writing;
 	}
 	
-	//´ä±Û ±â´É
+	//ë‹µê¸€ ê¸°ëŠ¥
 	public void boardReply(String board_no, String title, String content, String step, String ref, String lev){
 		
 	}
 	
-	//´ä±ÛÀÇ Ãâ·Â À§Ä¡ ¼±Á¤±â´É
+	//ë‹µê¸€ì˜ ì¶œë ¥ ìœ„ì¹˜ ì„ ì •ê¸°ëŠ¥
 	public int boardReplySearchStep(String ref, String lev, String step){
 		int replyStep = 0;
 		return replyStep;
 	}
 	
-	//´ä±Û ÀÛ¼º ÈÄ ¿ø±ÛµéÀÇ ´ä±Û °³¼ö¸¦ ´Ã·ÁÁÖ´Â ±â´É
+	//ë‹µê¸€ ì‘ì„± í›„ ì›ê¸€ë“¤ì˜ ë‹µê¸€ ê°œìˆ˜ë¥¼ ëŠ˜ë ¤ì£¼ëŠ” ê¸°ëŠ¥
 	public void boardReplyChildCntdate(String ref, String lev, int replyStep){
 		
 	}
