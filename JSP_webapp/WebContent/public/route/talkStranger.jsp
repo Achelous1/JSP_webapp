@@ -4,7 +4,7 @@
         <h1>ooo님과의 대화</h1>
         <ul class="list-group">
           <li class="list-group-item">
-              <div style="height: 600px;">
+              <div style="height: 500px;">
                     <!-- 상대대화내용 -->
                   <div class="media">
                       <div class="media-left">
@@ -28,7 +28,7 @@
               </div>
           </li>
           <li class="list-group-item">
-              <form action="/action_page.php" float:bottom>
+              <form action="/action_page.php">
               <div class="input-group">
                   <input type="text" class="form-control" placeholder="보낼 내용을 적어주세요~" name="message">
                   <div class="input-group-btn">

@@ -33,7 +33,7 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
       controller : 'signupCtrl'
   })
   //route to board write page
-  .when('/boardWrite.bctrl', {
+  .when('/boardWrite', {
       templateUrl: './public/route/boardWrite.jsp',
       controller : 'writeCtrl'
   })
@@ -43,7 +43,7 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
       controller : 'myPageCtrl'
   })
   //route to board content page
-  .when('/viewBoard', {
+  .when('/viewBoard.bctrl', {
       templateUrl: './public/route/viewBoard.jsp',
       controller : 'viewContentsCtrl'
   })

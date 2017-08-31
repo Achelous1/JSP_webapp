@@ -6,7 +6,7 @@
         <h1> 게시글 올리기 </h1>
     </thead>
     <tbody>
-        <form ng-submit="boardWrite()" method="post" encType="multiplart/form-data">
+        <form action="boardWrite.bctrl" method="post" encType="multiplart/form-data">
             <tr>
                 <th>제목</th>
                 <td><input type="text" placeholder="제목을 입력하세요. " name="" class="form-control"/></td>
@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="button" value="취소" class="btn btn-default pull-right"/>
+                    <input type="button" onclick="history.back(-1);" value="취소" class="btn btn-default pull-right"/>
                     <input type="submit" value="등록" class="btn btn-primary pull-right"/>
                 </td>
             </tr>

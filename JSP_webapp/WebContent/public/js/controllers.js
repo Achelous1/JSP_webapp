@@ -1,39 +1,7 @@
 //login controller
 app.controller('mainCtrl', function ($scope, $http, $modal) {
-    $rootScope.isLoggedIn = false;
-    $scope.login = function () {
-        var encodedString = 'user_id=' +
-        encodeURIComponent(this.inputData.user_id) +
-        '&user_pw=' +
-        encodeURIComponent(this.inputData.user_pw);
 
-        $http({
-            method: 'POST',
-            url: '/login.mctrl',
-            data: encodedString,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).then(function loginSuccess(response) {
-            alert("successfully logged in");
-            $rootScope.isLoggedIn = true;
-            $modal.close();
-        }, function loginError(response) {
-            alert("failed in logging in");
-        });
-    }
-
-    $scope.logout = function() {
-        $http({
-            method: 'POST',
-            url: './public/js/logout.php'
-        }).then(function logoutSuccess(response) {
-            $rootScope.isLoggedIn = false;
-        }, function logoutError(response) {
-            alert("something went wrong");
-        });
-    }
-})
-
-
+});
 //recommendations board control
 app.controller('recommendationCtrl', function ($scope, $http) {
     $scope.getBoardList = function (result) {

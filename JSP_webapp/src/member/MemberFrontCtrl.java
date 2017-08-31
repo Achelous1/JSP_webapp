@@ -39,22 +39,6 @@ public class MemberFrontCtrl extends HttpServlet {
 			MemberCmd cmd = new MemberSignupCmd();
 			
 			cmd.execute(request, response);
-			
-			//try-catch문으로 status코드 전송
-			/*try {
-				cmd.execute(request, response);
-				
-				//회원가입 성공 시 status 200 전송
-				response.setStatus(200);
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-				rd.forward(request, response);
-			} catch(Exception e) {
-				//예외발생 시 status 500 전송
-				response.setStatus(500);
-				
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp#!/signup");
-				rd.forward(request, response);
-			}*/
 			RequestDispatcher rd = request.getRequestDispatcher("index.html");
 			rd.forward(request, response);
 		//로그인을 했을 경우

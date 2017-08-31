@@ -26,8 +26,8 @@
             </tr>
             <tr>
               <td colspan="4" align="right">
-                <input type="button" value="글쓰기" onclick="#!/boardWrite" class="btn btn-primary">
-                <input type="button" value="목록으로" onclick="#!/board.bbs" class="btn btn-default">
+                <input type="button" value="글쓰기" onclick="moveTo('#!/boardWrite.bctrl');" class="btn btn-primary">
+                <input type="button" value="목록으로" onclick="moveTo('#!/reviews.bctrl');" class="btn btn-default">
               </td>
             </tr>
           </table>
