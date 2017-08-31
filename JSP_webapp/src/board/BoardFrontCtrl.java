@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.command.*;
 import board.command.BoardListCmd;
-import member.command.MemberCmd;
-import member.command.MemberLoginCmd;
-import member.command.MemberSignupCmd;
+
 
 /**
  * Servlet implementation class BoardFrontCtrl
@@ -63,34 +61,37 @@ public class BoardFrontCtrl extends HttpServlet {
 		BoardCmd cmd = null;
 		String viewPage = null;
 		
-		//±€ ∏Ò∑œ ¡∂»∏
+		//Í∏Ä Î™©Î°ù Ï°∞Ìöå
 		if(cmdURI.equals("/reviews.bctrl")){
 			cmd = new BoardListCmd();
 			cmd.execute(request, response);
 			viewPage = "reviews.jsp";
 		}
 		
-		//±€ ¿€º∫ »≠∏È ¡¶∞¯
-		if(cmdURI.equals("/boardWrite.bctrl")) {
-			cmd = new BoardWriteCmd();
-			cmd.execute(request, response);
-			viewPage = "boardWrite.bctrl";
-		}
-		
-		//±€ ¿€º∫ √≥∏Æ
-		if(cmdURI.equals("/boardWrite.bctrl")) {
-			cmd = new BoardWriteCmd();
-			cmd.execute(request, response);
+		//Í∏Ä ÏûëÏÑ± ÌôîÎ©¥ Ï†úÍ≥µ
+		else if(cmdURI.equals("/boardWrite")) {
 			viewPage = "boardWrite.jsp";
 		}
 		
-		// ±€∫∏±‚
-		if(cmdURI.equals("/viewBoard.bctrl")) {
+		//Í∏Ä ÏûëÏÑ± Ï≤òÎ¶¨
+		else if(cmdURI.equals("/boardWrite.bctrl")) {
+			System.out.println("write()");
+			cmd = new BoardWriteCmd();
+			cmd.execute(request, response);
+			viewPage = "/boardList.bctrl";
+		}
+		
+		// Í∏ÄÎ≥¥Í∏∞
+		else if(cmdURI.equals("/viewBoard.bctrl")) {
 			cmd = new BoardWriteCmd();
 			cmd.execute(request, response);
 			viewPage = "viewBoard.jsp";
 		}
-		
+		else if(cmdURI.equals("/boardList.bctrl")){
+			cmd = new BoardListCmd();
+			cmd.execute(request, response);
+			viewPage = "boardList.jsp";
+		}
 		
 		RequestDispatcher dis = request.getRequestDispatcher(viewPage);
 		dis.forward(request, response);
@@ -98,5 +99,4 @@ public class BoardFrontCtrl extends HttpServlet {
 		
 		//doGet(request, response);
 	}
-
 }

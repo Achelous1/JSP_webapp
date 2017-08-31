@@ -14,6 +14,8 @@ public class BoardWriteCmd implements BoardCmd{
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
 		
+		System.out.println(mem_no + title + contents);
+		
 		BoardDAO dao = new BoardDAO();
 		dao.boardWrite(mem_no, title, contents);
 	}
