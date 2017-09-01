@@ -33,12 +33,13 @@ public class BoardDAO {
 		
 		try{
 			conn = ds.getConnection();
-			String sql = "SELECT BOARD_NO, TITLE, CONTENTS, POST_DATE, ref, step, lev, read_cnt, child_cnt FROM BOARD ORDER BY ref, step, lev, read_cnt, child_cnt LIMIT ?, ?";
-			//디비테이블 조회 -디비 수정필요함// ref, step은 이후 답변글 처리하기 위한 컬럼//LIMIT [시작번호], [출력범위]
+			System.out.println("디비 연결 성공");
+			String sql = "SELECT BOARD_NO, MEM_NO, TITLE, CONTENTS, POST_DATE, ref, step, lev, read_cnt, child_cnt FROM BOARD ORDER BY ref desc, step asc ";
+			//디비테이블 조회 // ref, step은 이후 답변글 처리하기 위한 컬럼//LIMIT [시작번호], [출력범위]
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, WRITING_PER_PAGE * (Integer.parseInt(curPage)));
-			pstmt.setInt(2, WRITING_PER_PAGE);
+			/*pstmt.setInt(1, WRITING_PER_PAGE * (Integer.parseInt(curPage)));
+			pstmt.setInt(2, WRITING_PER_PAGE);*/
 			
 			rs = pstmt.executeQuery();
 			
@@ -52,8 +53,8 @@ public class BoardDAO {
 				int ref = rs.getInt("ref");
 				int step = rs.getInt("step");
 				int lev = rs.getInt("lev");
-				int read_cnt = rs.getInt("readCnt");
-				int child_cnt = rs.getInt("childCnt");
+				int read_cnt = rs.getInt("read_cnt");
+				int child_cnt = rs.getInt("child_cnt");
 				
 				BoardDTO writing = new BoardDTO();
 				writing.setBoard_no(board_no);

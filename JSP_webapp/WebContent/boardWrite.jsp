@@ -13,7 +13,7 @@
 	<form action="boardWrite.bctrl" method="post">
 	<table>
 		<tr>
-			<td colspan="4" align="right"><a href="boardList.bbs">[목록으로]</a>
+			<td colspan="4" align="right"><a href="boardList.bctrl">[목록으로]</a>
 			</td>
 		</tr>
 		<tr>

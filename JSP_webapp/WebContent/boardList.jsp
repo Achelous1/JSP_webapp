@@ -1,29 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%> 
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>°Ô½ÃÆÇ ¸ñ·Ï Á¶È¸</h3>
+	<h3>ê²Œì‹œíŒ ëª©ë¡ ì¡°íšŒ</h3>
 		
 		<table border="1">
 			<tr>
 				<td colspan="6" align="right">
-					<a href="boardWrite.bctrl">[»õ±Û¾²±â]</a>
+					<a href="boardWrite.jsp">[ìƒˆê¸€ì“°ê¸°]</a>
 				</td>
 			</tr>
 			<tr>
-				<td>±Û ¹øÈ£</td>
-				<td>±Û Á¦¸ñ</td>
-				<td>ÀÛ¼ºÀÚ</td>
-				<td>ÀÛ¼ºÀÏ</td>
+				<td>ê¸€ ë²ˆí˜¸</td>
+				<td>ê¸€ ì œëª©</td>
+				<td>ìž‘ì„±ìž</td>
+				<td>ìž‘ì„±ì¼</td>
 				
-				<td>Á¶È¸¼ö</td>
-				<td>´ä±Û¼ö</td>
+				<td>ì¡°íšŒìˆ˜</td>
+				<td>ë‹µê¸€ìˆ˜</td>
 			</tr>		
 			<c:forEach items="${boardList }" var="dto">
 				<tr>
@@ -44,7 +44,7 @@
 			
 			<tr>
 				<td colspan="6">
-				<a href="boardList.bctrl">[Ã¹ ÆäÀÌÁö·Î]</a>
+				<a href="boardList.bctrl">[ì²« íŽ˜ì´ì§€ë¡œ]</a>
 					<c:forEach var ="i" begin="1" end ="${pageCnt}">
 						<a href="boardList.bctrl?curPage=${i}">[${i}]</a>
 					</c:forEach>
@@ -56,13 +56,13 @@
 				<td colspan="6" align="center">
 					<form action="boardSearch.bctrl" method="post">
 						<select name="searchOption">
-							<option value="title">Á¦¸ñ</option>
-							<option value="contents">º»¹®</option>
-							<option value="both">Á¦¸ñ+º»¹®</option>
-							<option value="mem_no">ÀÛ¼ºÀÚ</option>
+							<option value="title">ì œëª©</option>
+							<option value="contents">ë³¸ë¬¸</option>
+							<option value="both">ì œëª©+ë³¸ë¬¸</option>
+							<option value="mem_no">ìž‘ì„±ìž</option>
 						</select>
 						<input type="text" name="searchWord">
-						<input type="submit" value="°Ë»ö">
+						<input type="submit" value="ê²€ìƒ‰">
 					</form>
 				</td>
 			</tr>
