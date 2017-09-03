@@ -21,3 +21,4 @@ public class BoardWriteCmd implements BoardCmd{
 	}
 	
 }
+

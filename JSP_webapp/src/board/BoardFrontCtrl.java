@@ -67,6 +67,11 @@ public class BoardFrontCtrl extends HttpServlet {
 			cmd.execute(request, response);
 			viewPage = "reviews.jsp";
 		}
+		else if(cmdURI.equals("/boardList.bctrl")){
+			cmd = new BoardListCmd();
+			cmd.execute(request, response);
+			viewPage = "boardList.jsp";
+		}
 		
 		//글 작성 화면 제공
 		else if(cmdURI.equals("/boardWrite")) {
@@ -87,11 +92,7 @@ public class BoardFrontCtrl extends HttpServlet {
 			cmd.execute(request, response);
 			viewPage = "viewBoard.jsp";
 		}
-		else if(cmdURI.equals("/boardList.bctrl")){
-			cmd = new BoardListCmd();
-			cmd.execute(request, response);
-			viewPage = "boardList.jsp";
-		}
+		
 		
 		RequestDispatcher dis = request.getRequestDispatcher(viewPage);
 		dis.forward(request, response);
