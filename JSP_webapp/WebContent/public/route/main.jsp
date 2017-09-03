@@ -70,7 +70,7 @@
 	<script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
 	
 	<div style="box-shadow: 3px 3px 3px rgba(133,133,133,0.60); margin-top: 20px;" >
-		<a class="twitter-timeline" data-lang="ko" data-width="250" data-height="300" data-dnt="true" data-theme="light" data-link-color="#E81C4F" href="https://twitter.com/LonelyTravele10">Tweets by LonelyTravele10</a> 
+		<a class="twitter-timeline" data-lang="ko" data-width="100%" data-height="300" data-dnt="true" data-theme="light" data-link-color="#E81C4F" href="https://twitter.com/LonelyTravele10">Tweets by LonelyTravele10</a> 
 		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</div>
 </div>

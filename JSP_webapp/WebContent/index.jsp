@@ -70,7 +70,20 @@
         <!-- 조원코딩구간 -->
         <ng-view></ng-view>
         <!-- 조원코딩구간 끝 -->
+        
+        
       </div>
+      <!-- start of footer -->
+         <footer class="col-sm-10" style="z-index: -1;">
+         	<img class="img-responsive" src="./public/img/footer.png" width="100%" style="margin-top:-200px; z-index: -4;">
+		    <div>
+		    <center>
+		        <a href="#"><img class="img-responsive" src="./public/img/if_Facebook_logo_2258500.png" width="50px" height="50px"></a>
+		        <a href="#"><img class="img-responsive" src="./public/img/if_Twitter_letter_logo_2258489.png" width="50px" height="50px" style="margin-left: 100px;"></a>
+		        <a href="#"><img class="img-responsive" src="./public/img/if_Instagram_logo_2258498.png" width="50px" height="50px" style="margin-left: 100px;"></a>
+		    </center>
+		    </div>
+		  </footer>
     </div>
   </div>
   <!--Start of log in modal-->
