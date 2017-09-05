@@ -5,17 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.model.*;
 
-public class BoardUpdateCmd implements BoardCmd {
+public class BoardUpdateFormCmd implements BoardCmd{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String inputBoard_no = request.getParameter("board_no");
-		String inputTitle = request.getParameter("title");
-		String inputContents = request.getParameter("contents");
-		
 		BoardDAO dao = new BoardDAO();
-		dao.boardUpdate(inputBoard_no, inputTitle, inputContents);
+		BoardDTO writing = dao.boardUpdateForm(inputBoard_no);
+		
+		request.setAttribute("boardUpdateForm", writing);
 	}
 
 }

@@ -80,6 +80,47 @@ public class BoardFrontCtrl extends HttpServlet {
 			System.out.println(viewPage);
 		}
 		
+		// 글수정화면 제공
+		if(cmdURI.equals("/boardUpdateForm.bctrl")){
+			cmd = new BoardUpdateFormCmd();
+			cmd.execute(request, response);
+			viewPage = "boardUpdateForm.jsp";
+		}
+		//글수정 처리
+		if(cmdURI.equals("/boardUpdate.bctrl")){
+			cmd = new BoardUpdateCmd();
+			cmd.execute(request, response);
+			viewPage = "boardList.bctrl";
+		}
+	
+		// 글 삭제
+		if(cmdURI.equals("/boardDelete.bctrl")){
+			cmd = new BoardDeleteCmd();
+			cmd.execute(request, response);
+			viewPage = "boardList.bctrl";
+		}
+		
+		// 검색
+		if(cmdURI.equals("/boardSearch.bctrl")){
+			cmd = new BoardSearchCmd();
+			cmd.execute(request, response);
+			viewPage = "boardSearchList.jsp";
+		}
+				
+		// 답글 작성 화면
+		if(cmdURI.equals("/boardReplyForm.bctrl")){
+			cmd = new BoardReplyFormCmd();
+			cmd.execute(request, response);
+			viewPage = "boardReply.jsp";
+		}
+				
+		//답글 처리
+		if(cmdURI.equals("/boardReply.bctrl")){
+			cmd = new BoardReplyCmd();
+			cmd.execute(request, response);
+			viewPage = "boardList.bctrl";
+		}
+		
 		RequestDispatcher dis = request.getRequestDispatcher(viewPage);
 		dis.forward(request, response);
 		
