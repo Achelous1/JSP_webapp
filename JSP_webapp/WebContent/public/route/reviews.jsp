@@ -3,46 +3,41 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <h1>여행 후기</h1>
 
-<!-- <div id="review_table" ng-repeat="x in names">
+<div class="form-group" style="margin-top:50px; padding-left: 60%;">
+	<select class="form-control" name="search_type" ng-model="search_type" style="width:150px; float:left; height: 30px;" placeholder="검색 유형">
+	   <option style="font-size: 16px;" value="title" selected>제목 검색</option>
+	   <option value="content">내용 검색</option>
+	   <option value="user_name">작성자 검색</option>
+   </select>
+	
+ <div class="input-group-btn">
+	 <input class="form-control" type="text" name="searchStr" ng-model="searchStr" placeholder="검색할 문맥" style="width:250px; float:left; height:30px;">
+	 <a id="searchBtn" href="#!/search.bctrl?page=index.html#!/reviews.bctrl&search_type={{ search_type }}&searchStr={{ searchStr }}" class="btn btn-info" style="height: 30px;">
+		 <i class="glyphicon glyphicon-search"></i>
+	 </a>
+	 <a href="#!/boardWrite" class="btn btn-success" style="height:30px;">	<span class="glyphicon glyphicon-pencil"></span></a>
+   </div>
+</div>
+
+<div id="review_table" ng-repeat="x in list | limitTo : 5">
 	<table>
-		<td rowspan="2" style="width: 130px;"><img src="./public/img/tokyo.jpg" width="120px" height="120px" align="left"></td>
-		<td style="margin-left: 10px"><a href="#!/viewBoard.bctrl"><font style="font-size:25px">{{ x.Name }}</font></a></td>
+		<td rowspan="2" style="width: 100px;"><img src="./public/img/tokyo.jpg" width="90px" height="90px" align="left"></td>
+		<td style="margin-left: 10px"><a href="#!/viewBoard.bctrl?board_no={{ x.board_no }}"><font style="font-size:25px">{{ x.title }}</font></a></td>
 		<tr>
-			<td style="margin-left: 10px">{{ x.City }}</td>
+			<td style="margin-left: 10px">{{ x.content | limitTo : 100 }}</td>
 		</tr>
 		<tr>
-			<input type="hidden" name="board_num" value="{{x.board_num}}">
+			<input type="hidden" name="board_num" value="{{x.mem_no}}">
+			<label>{{ x.mem_name }}</label>
 		</tr>
-	</table> -->
-	<div class="form-group" style="margin-top:50px; padding-left: 60%;">
- 		<select class="form-control" name="search_type" ng-model="search_type" style="width:150px; float:left; height: 30px;">
-			<option style="font-size: 16px;" value="title" selected>제목 검색</option>
-			<option value="content">내용 검색</option>
-			<option value="user_name">작성자 검색</option>
-		</select>
-		 
-	  <div class="input-group-btn">
-	  	<input class="form-control" type="text" name="searchStr" ng-model="searchStr" placeholder="검색할 문맥" style="width:250px; float:left; height:30px;">
-		  <a href="#!/search.bctrl?{{ search_type }}={{ searchStr }}" class="btn btn-info" style="height: 30px;">
-		  	<i class="glyphicon glyphicon-search"></i>
-		  </a>
-		  <a href="#!/boardWrite" class="btn btn-success" style="height:30px;">	<span class="glyphicon glyphicon-pencil"></span></a>
-		</div>
-	</div>
-	<c:forEach items="${list}">
-		<table>
-			<tr>
-				<td rowspan="2" style="width: 130px;"><img src="./public/img/tokyo.jpg" width="120px" height="120px" align="left"></td>
-				<td style="margin-left: 10px"><a href="#!/viewBoard.bctrl"><font style="font-size:25px">${list.title}</font></a></td>
-			</tr>
-			<tr>
-				<td style="margin-left: 10px">${person.contents}</td>
-			</tr>
-			<tr>
-				<input type="hidden" name="board_num" value="${list.board_no}">
-			</tr>
-		</table>
-	 </c:forEach>
-	 
-	 
+	</table>
+	
+	<ul class="pagination pagination">
+	    <li><a href="#">1</a></li>
+	    <li><a href="#">2</a></li>
+	    <li><a href="#">3</a></li>
+	    <li><a href="#">4</a></li>
+	    <li><a href="#">5</a></li>
+	  </ul>
+
 </div>

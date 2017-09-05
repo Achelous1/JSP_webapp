@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td>작성자</td>
-			<td colspan="3"><input type="text" name="mem_no" maxlength="4"></td>
+			<td colspan="3"><input type="text" name="user_id" maxlength="4"></td>
 		</tr>
 		<tr>
 			<td>본문</td>

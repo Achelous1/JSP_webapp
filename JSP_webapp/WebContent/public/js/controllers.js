@@ -1,6 +1,5 @@
 //login controller
 app.controller('mainCtrl', function ($scope, $http, $modal) {
-
 });
 //recommendations board control
 app.controller('recommendationCtrl', function ($scope, $http) {
@@ -9,51 +8,31 @@ app.controller('recommendationCtrl', function ($scope, $http) {
     }
     //Get recommendations board list from DB -> JSON
     $scope.listJSON = {Title: "Here comes title", Value: "here comes value"};
-    $scope.list = listJSON;
 });
 
 //review board control
 app.controller('reviewsCtrl', function ($scope, $http) {
-    $scope.getBoardList = function (result) {
-        alert("get reviews");
-        // $http.get("../php/customers.php")
-        // .then(function (response) {$scope.names = response.data.records;});
-        
-    }
-    $scope.names = myJSON;
+    //moveTo('search.bctrl?page=index.html#!/reviews');
+    // $scope.getListFromServer = function(){
+    //     $http({
+    //         method : 'GET',
+    //         url : '/JSP_webapp/reviews'
+    //     }).success(function(data, status, headers, config) {
+    //             $scope.list = data;
+    //     }).error(function(data, status, headers, config) {
+    //             // called asynchronously if an error occurs
+    //             // or server returns response with an error status.
+    //     });
+    // };
 });
 
 //write board control
 app.controller('writeCtrl', function ($scope, $http) {
-    $scope.boardWrite = function (result) {
-        alert("write on board");
-    }
 });
 
 //sign up control
 app.controller('signupCtrl', function ($scope, $http) {
-    // $scope.signup = function(){
-    //     $http.post("/signup.mctrl")({
-    //     }).then(function mySuccess(response) {
-    //         $scope.successSignup = response.data;
-    //     }, function myError(response) {
-    //         $scope.failSignup = response.statusText;
-    //     });
-    // }
-    if(response.status == 500){
-        $scope.data = {
-            boldTextTitle: "에러!",
-            textAlert : "무언가 잘못되었군요! 다시 가입해주세요.",
-            mode : 'warning'
-          }  
-    }
-    else if(response.status == 200){
-        $scope.data = {
-            boldTextTitle: "가입성공!",
-            textAlert : "회원가입이 완료되었습니다. 로그인해주세요.",
-            mode : 'success'
-          }
-    }
+
 });
 
 //view contents control

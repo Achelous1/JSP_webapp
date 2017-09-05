@@ -36,7 +36,7 @@
         <ul class="nav nav-pills nav-stacked" style="text-align : right; margin-top : 50px;">
           <li><a href="#!/">여행동반자 찾기</a></li>
           <li><a href="#!/myMatchList.cbs">My 매칭리스트</a></li>
-          <li><a href="#!/reviews.bctrl">이용후기</a></li>
+          <li><a href="reviews">이용후기</a></li>
           <li><a href="#!/recommendations.bctrl">추천여행지</a></li>
         </ul>
       </nav>
@@ -61,7 +61,7 @@
               <li class="divider"></li>
               <li><a href="#!/myMatchList.cbs">마이매칭리스트</a></li>
             </ul>
-            <p style="float:right; margin-top: 10px; margin-right: 30px;">어서오세요. <strong>[<%= session.getAttribute("user_name") %>]</strong>님</p>
+            <p style="float:right; margin-top: 10px; margin-right: 30px;">어서오세요. <strong><%= session.getAttribute("user_name") %></strong>님</p>
            <%
             }
            %>
@@ -70,20 +70,7 @@
         <!-- 조원코딩구간 -->
         <ng-view></ng-view>
         <!-- 조원코딩구간 끝 -->
-        
-        
       </div>
-      <!-- start of footer -->
-         <footer class="col-sm-10" style="z-index: -1;">
-         	<img class="img-responsive" src="./public/img/footer.png" width="100%" style="margin-top:-200px; z-index: -4;">
-		    <div>
-		    <center>
-		        <a href="#"><img class="img-responsive" src="./public/img/if_Facebook_logo_2258500.png" width="50px" height="50px"></a>
-		        <a href="#"><img class="img-responsive" src="./public/img/if_Twitter_letter_logo_2258489.png" width="50px" height="50px" style="margin-left: 100px;"></a>
-		        <a href="#"><img class="img-responsive" src="./public/img/if_Instagram_logo_2258498.png" width="50px" height="50px" style="margin-left: 100px;"></a>
-		    </center>
-		    </div>
-		  </footer>
     </div>
   </div>
   <!--Start of log in modal-->

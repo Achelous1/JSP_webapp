@@ -25,7 +25,7 @@
 				<td>조회수</td>
 				<td>답글수</td>
 			</tr>		
-			<c:forEach items="${boardList }" var="dto">
+			<c:forEach items="${ boardList }" var="dto">
 				<tr>
 					<td><a href="viewBoard.bctrl?board_no=${dto.board_no }">${dto.board_no }</a></td>
 					

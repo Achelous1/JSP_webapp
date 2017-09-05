@@ -51,9 +51,9 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
       templateUrl: './public/php/SessionAttributeSet.jsp'
   })
   //route back to main otherwise
-  .otherwise({
-    redirectTo: '/'
-  });
+//  .otherwise({
+//    redirectTo: '/'
+//  });
 /*  $locationProvider.html5Mode(true);
 */});
 

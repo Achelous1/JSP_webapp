@@ -2,6 +2,16 @@
     pageEncoding="UTF-8"%>
 <div class="container">
   <h1>매칭리스트</h1>
+  <%
+  	if(session.getAttribute("user_id") == null){
+  %>
+  	<script>
+  		alert("로그인 후 서비스를 이용해 주세요");
+  		moveTo("index.jsp");
+  	</script>
+  <%
+  	} else if(session.getAttribute("user_id") != null) {
+  %>
   <table class="table">
     <thead>
       <tr>
@@ -40,5 +50,7 @@
         </tr>
       </tbody>
     </thead>
-
   </table>
+  <%
+  	}
+  %>

@@ -13,9 +13,7 @@ public class MemberLoginCmd implements MemberCmd{
 		String pw = request.getParameter("user_pw");
 		
 		MemberDAO mem = new MemberDAO();
-		MemberDTO memInfo = new MemberDTO();
-		
-		memInfo = mem.checkLogin(id, pw);
+		MemberDTO memInfo = mem.checkLogin(id, pw);
 		
 		request.setAttribute("memInfo", memInfo);
 	}

@@ -34,7 +34,7 @@ public class BoardDAO {
 		try{
 			conn = ds.getConnection();
 			System.out.println("디비 연결 성공");
-			String sql = "SELECT BOARD_NO, MEM_NO, TITLE, CONTENTS, POST_DATE, ref, step, lev, read_cnt, child_cnt FROM BOARD ORDER BY ref desc, step asc ";
+			String sql = "SELECT * FROM BOARD ORDER BY ref desc, step asc ";
 			//디비테이블 조회 // ref, step은 이후 답변글 처리하기 위한 컬럼//LIMIT [시작번호], [출력범위]
 			
 			pstmt = conn.prepareStatement(sql);
@@ -227,6 +227,61 @@ public class BoardDAO {
 	//검색기능
 	public ArrayList<BoardDTO> boardSearch(String searchOption, String searchWord){
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			conn = ds.getConnection();
+			System.out.println("디비 연결 성공");
+			String sql = " SELECT * FROM BOARD ORDER BY REF DESC, STEP ASC WHERE ? = ? ";
+			//디비테이블 조회 // ref, step은 이후 답변글 처리하기 위한 컬럼//LIMIT [시작번호], [출력범위]
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchOption);
+			pstmt.setString(2, searchWord);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				int board_no = rs.getInt("board_no");
+				String mem_no = rs.getString("mem_no");
+				String title = rs.getString("title");
+				String contents = rs.getString("contents");
+				Date post_date = rs.getDate("post_date");
+				int ref = rs.getInt("ref");
+				int step = rs.getInt("step");
+				int lev = rs.getInt("lev");
+				int read_cnt = rs.getInt("read_cnt");
+				int child_cnt = rs.getInt("child_cnt");
+				
+				BoardDTO writing = new BoardDTO();
+				writing.setBoard_no(board_no);
+				writing.setMem_no(mem_no);
+				writing.setTitle(title);
+				writing.setContents(contents);
+				writing.setPost_date(post_date);
+				writing.setRef(ref);
+				writing.setStep(step);
+				writing.setLev(lev);
+				writing.setRead_cnt(read_cnt);
+				writing.setChild_cnt(child_cnt);
+				
+				list.add(writing);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs !=null) rs.close();
+				if(pstmt !=null) pstmt.close();
+				if(conn !=null) conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return list;
 	}
 	

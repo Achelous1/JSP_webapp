@@ -6,17 +6,22 @@
         <h1> 게시글 올리기 </h1>
     </thead>
     <tbody>
-        <form action="boardWrite.bctrl" method="post" encType="multiplart/form-data">
+        <form action="boardWrite.bctrl" method="POST">
             <tr>
                 <th>제목</th>
-                <td><input type="text" placeholder="제목을 입력하세요. " name="" class="form-control"/></td>
+                <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control"/></td>
+                <td><input type="hidden" name="mem_no" value= "<%= session.getAttribute("user_no") %>"  /></td>
+            </tr>
+            <tr>
+                <td>작성자</td>
+                <td><%= session.getAttribute("user_name") %></td>
             </tr>
             <tr>
               <th></th>
               <td>
-                <input type="radio" name="name" value="rev">후기
-                <input type="radio" name="name" value="rec">추천여행지
-                <select name='job' size='1'>
+                <input type="radio" name="type" value="rev">후기
+                <input type="radio" name="type" value="rec" disabled>추천여행지
+                <!-- <select name='job' size='1'>
                   <option value=''>나의 여행지</option>
                   <option value='17/10/18~17/10/20'>17/10/18~17/10/20</option>
                   <option value='17/10/28~17/10/05'>17/10/28~17/10/05</option>
@@ -29,13 +34,13 @@
                   <option value=''>9</option>
                   <option value=''>10</option>
                   <option value=''>11</option>
-                </select>
-                <input type="file" name="FileName" value="사진 등록" >
+                </select> -->
+                <input type="file" name="fileName" value="사진 등록" >
               </td>
             </tr>
             <tr>
                 <th>내용</th>
-                <td><textarea cols="50" rows="20" placeholder="내용을 입력하세요. " name="" class="form-control"></textarea></td>
+                <td><textarea cols="50" rows="20" placeholder="내용을 입력하세요." name="contents" class="form-control" maxlength="1000"></textarea></td>
             </tr>
             <tr>
                 <td colspan="2">

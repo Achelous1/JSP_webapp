@@ -34,12 +34,12 @@ public class MemberFrontCtrl extends HttpServlet {
 		System.out.println(contextPath);
 		System.out.println(request.getParameter("user_id"));
 		
-		//회원가입 했을 경구
+		//회원가입 했을 경우
 		if(cmdURI.equals("/signup.mctrl")) {
 			MemberCmd cmd = new MemberSignupCmd();
 			
 			cmd.execute(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher("index.html");
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		//로그인을 했을 경우
 		}else if(cmdURI.equals("/login.mctrl")) {

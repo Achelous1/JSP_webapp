@@ -65,7 +65,7 @@ body{
 footer{
   font-family: "lucida console", monospace;
   height: 250px;
- /*  background-color: rgba(255, 88, 117, 0.7); */
+  background-color: rgba(255,255,255,0.7);
   color: white;
   width: 100%;
   display: inline-block;
@@ -76,7 +76,7 @@ footer div{
   /* background-color: rgb(20,20,20); */
   padding-top: 10px;
   width: 100%;
-  text-align: center;
+  align-content: center;  
 }
 footer ul{
   font-size: 12px;

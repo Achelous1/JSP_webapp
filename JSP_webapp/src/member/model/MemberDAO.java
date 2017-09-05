@@ -37,7 +37,7 @@ public class MemberDAO {
 		
 		
 		try {
-			String sql = " SELECT MEM_NO, MEM_ID, MEM_PW, MEM_NAME FROM MEMBERS WHERE MEM_ID = ? AND MEM_PW = ? ";
+			String sql = " SELECT * FROM MEMBERS WHERE MEM_ID = ? AND MEM_PW = ? ";
 			
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -50,10 +50,10 @@ public class MemberDAO {
 			System.out.println(rs);
 			
 			while(rs.next()) {
+				mem.setMem_no(rs.getInt("mem_no"));
 				mem.setMem_id(rs.getString("mem_id"));
 				mem.setMem_pw(rs.getString("mem_pw"));
 				mem.setMem_name(rs.getString("mem_name"));
-				mem.setMem_no(rs.getInt("mem_no"));
 			}
 			System.out.println(mem.getMem_id() + " " + mem.getMem_pw() + " logged in.");
 			
