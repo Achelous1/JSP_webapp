@@ -33,7 +33,6 @@ public class BoardDAO {
 
 		try {
 			conn = ds.getConnection();
-			System.out.println("디비 연결 성공");
 			String sql = "SELECT * FROM BOARD ORDER BY ref desc, step asc ";
 			// 디비테이블 조회 // ref, step은 이후 답변글 처리하기 위한 컬럼//LIMIT [시작번호], [출력범위]
 
@@ -128,8 +127,6 @@ public class BoardDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
-		System.out.println(mem_no + title + contents);
-
 		try { /*
 				 * String sql =
 				 * "INSERT INTO BOARD (BOARD_NO) VALUES (BOARDNO_SEQUENSE.NEXTVAL) "
@@ -162,7 +159,7 @@ public class BoardDAO {
 	}
 
 	// 게시판 열람
-	public BoardDTO boardRead(String inputBoard_no) {
+	public BoardDTO boardRead(int inputBoard_no) {
 		BoardDTO writing = new BoardDTO();
 
 		Connection conn = null;
@@ -173,11 +170,11 @@ public class BoardDAO {
 			conn = ds.getConnection();
 			String sql = "UPDATE BOARD SET READ_CNT = READ_CNT+1 WHERE BOARD_NO = ? ";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(inputBoard_no));
+			pstmt.setInt(1, inputBoard_no);
 
 			sql = "SELECT BOARD_NO, MEM_NO, TITLE, CONTENTS, POST_DATE, ref, step, lev, read_cnt, child_cnt FROM BOARD WHERE board_no = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(inputBoard_no));
+			pstmt.setInt(1, inputBoard_no);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {

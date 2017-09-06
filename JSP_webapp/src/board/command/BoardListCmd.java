@@ -23,8 +23,7 @@ public class BoardListCmd implements BoardCmd {
 		BoardDAO dao = new BoardDAO();
 		ArrayList<BoardDTO> list;
 		//Gson gson = new Gson();
-		
-		System.out.println("list()");
+
 		int pageCnt = 0;
 		String curPage = request.getParameter("curPage");
 		

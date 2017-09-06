@@ -82,6 +82,7 @@ public class BoardFrontCtrl extends HttpServlet {
 		
 		// 글수정화면 제공
 		if(cmdURI.equals("/boardUpdateForm.bctrl")){
+			
 			cmd = new BoardUpdateFormCmd();
 			cmd.execute(request, response);
 			viewPage = "boardUpdateForm.jsp";

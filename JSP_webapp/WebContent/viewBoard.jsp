@@ -16,23 +16,23 @@
 			</tr>
 			<tr>
 				<td>글 제목</td>
-				<td colspan="3"><p value="${viewBoard.title}"></p></td>
+				<td colspan="3">${boardRead.title}</p></td>
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><input type="text" name="mem_no" maxlength="20" size="20" value="${viewBoard.mem_no}" disabled="disabled"></td>
-				<td>조회수:${viewBoard.read_cnt},</td>
-				<td>답글수:${viewBoard.child_cnt}</td>
+				<td><input type="text" name="mem_no" maxlength="20" size="20" value="${boardRead.mem_no}" disabled="disabled"></td>
+				<td>조회수:${boardRead.read_cnt},</td>
+				<td>답글수:${boardRead.child_cnt}</td>
 			</tr>
 			<tr>
 				<td>본문</td>
-				<td colspan="3"><textarea name="contents" rows="8" cols="45" disabled="disabled">${viewBoard.contents}</textarea></td>
+				<td colspan="3"><textarea name="contents" rows="8" cols="45" disabled="disabled">${boardRead.contents}</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="4" align="right">
-					<a href="boardUpdatePassword.bctrl?board_no=${viewBoard.board_no}">[수정]</a>
-					<a href="boardDeletePassword.bctrl?board_no=${viewBoard.board_no}">[삭제]</a>
-					<a href="boardReplyForm.bctrl?board_no=${viewBoard.board_no}">[답글]</a>
+					<a href="boardUpdateForm.bctrl?board_no=${boardRead.board_no}">[수정]</a>
+					<a href="boardDelete.bctrl?board_no=${boardRead.board_no}">[삭제]</a>
+					<a href="boardReplyForm.bctrl?board_no=${boardRead.board_no}">[답글]</a>
 				</td>
 			</tr>
 		</table>
