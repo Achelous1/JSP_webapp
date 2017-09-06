@@ -11,7 +11,7 @@ app.controller('recommendationCtrl', function ($scope, $http) {
 });
 
 //review board control
-app.controller('reviewsCtrl', function ($scope, $http) {
+app.controller('reviewsCtrl', ['$scope', '$window', '$http',  function ($scope, $http, $window) {
     //moveTo('search.bctrl?page=index.html#!/reviews');
     // $scope.getListFromServer = function(){
     //     $http({
@@ -24,7 +24,10 @@ app.controller('reviewsCtrl', function ($scope, $http) {
     //             // or server returns response with an error status.
     //     });
     // };
-});
+	console.log(boardList);
+	$scope.list = boardList;
+	console.log($scope.list);
+}]);
 
 //write board control
 app.controller('writeCtrl', function ($scope, $http) {

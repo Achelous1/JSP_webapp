@@ -43,7 +43,7 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
       controller : 'myPageCtrl'
   })
   //route to board content page
-  .when('/viewBoard.bctrl', {
+  .when('/viewBoard', {
       templateUrl: './public/route/viewBoard.jsp',
       controller : 'viewContentsCtrl'
   })
