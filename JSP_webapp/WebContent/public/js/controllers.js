@@ -16,7 +16,7 @@ app.controller('reviewsCtrl', function ($scope, $http) {
     // $scope.getListFromServer = function(){
     //     $http({
     //         method : 'GET',
-    //         url : '/JSP_webapp/reviews'
+    //         url : '/JSP_webapp/reviews.bctrl'
     //     }).success(function(data, status, headers, config) {
     //             $scope.list = data;
     //     }).error(function(data, status, headers, config) {

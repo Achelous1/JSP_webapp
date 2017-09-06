@@ -8,12 +8,12 @@
     <param-name>weblogic.httpd.inputCharset./*</param-name>
     <param-value>UTF-8</param-value>
   </context-param>
-   <servlet>
+  <!-- <servlet>
     <servlet-name>reviews</servlet-name>
-    <servlet-class>board.BoardFrontCtrl</servlet-class>
+    <servlet-class>board.GetList</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>reviews</servlet-name>
-    <url-pattern>/reviews</url-pattern>
-  </servlet-mapping>
- </web-app>
+    <url-pattern>/reviews.bctrl</url-pattern>
+  </servlet-mapping> -->
+</web-app>

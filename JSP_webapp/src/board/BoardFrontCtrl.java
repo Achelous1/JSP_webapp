@@ -38,12 +38,12 @@ public class BoardFrontCtrl extends HttpServlet {
 		
 		BoardCmd cmd = null;
 		String viewPage = null;
-		
+
 		//글 목록 조회
-		if(cmdURI.equals("/reviews")){
+		if(cmdURI.equals("/reviews.bctrl")){
 			cmd = new BoardListCmd();
 			cmd.execute(request, response);
-			viewPage = "reviews.bctrl";
+			viewPage = "public/php/boardRedirect.jsp";
 		}
 		else if(cmdURI.equals("/boardList.bctrl")){
 			cmd = new BoardListCmd();
@@ -64,14 +64,12 @@ public class BoardFrontCtrl extends HttpServlet {
 			else if(request.getAttribute("type") == "rec")
 				viewPage = "recommendations.bctrl";
 		}
-		
 		// 글보기
 		else if(cmdURI.equals("/viewBoard.bctrl")) {
 			cmd = new BoardReadCmd();
 			cmd.execute(request, response);
 			viewPage = "viewBoard.jsp";
 		}
-		
 		//검색 버튼
 		else if(cmdURI.equals("/search.bctrl")) {
 			cmd = new BoardSearchCmd();
@@ -79,7 +77,6 @@ public class BoardFrontCtrl extends HttpServlet {
 			viewPage = (String) request.getAttribute("page");
 			System.out.println(viewPage);
 		}
-		
 		RequestDispatcher dis = request.getRequestDispatcher(viewPage);
 		dis.forward(request, response);
 		

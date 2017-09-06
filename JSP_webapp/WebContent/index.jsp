@@ -36,7 +36,7 @@
         <ul class="nav nav-pills nav-stacked" style="text-align : right; margin-top : 50px;">
           <li><a href="#!/">여행동반자 찾기</a></li>
           <li><a href="#!/myMatchList.cbs">My 매칭리스트</a></li>
-          <li><a href="reviews">이용후기</a></li>
+          <li><a href="reviews.bctrl">이용후기</a></li>
           <li><a href="#!/recommendations.bctrl">추천여행지</a></li>
         </ul>
       </nav>
@@ -51,9 +51,9 @@
           	if(session.getAttribute("user_id") == null){
           %>
             <input type="button" class="btn btn-default" style="float: right;" value="로그인/회원가입" data-toggle="modal" data-target="#logIn">
-           <%
+          <%
           	} else if(session.getAttribute("user_id") != null){
-           %>
+          %>
             <a href="./public/php/SessionQuit.jsp" class="btn btn-default" style="float: right;">로그아웃</a>
             <input type="button" class="btn btn-default" style="float: right;" data-toggle="dropdown" value="마이페이지">
             <ul class="dropdown-menu dropdown-menu-right" style="position: absolute; z-index: 1; margin-right: 20px; margin-top: 30px;">

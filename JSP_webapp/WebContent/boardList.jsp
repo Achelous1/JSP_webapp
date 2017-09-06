@@ -28,7 +28,6 @@
 			<c:forEach items="${ boardList }" var="dto">
 				<tr>
 					<td><a href="viewBoard.bctrl?board_no=${dto.board_no }">${dto.board_no }</a></td>
-					
 					<td>
 						<c:forEach begin="1" end="${dto.lev }">
 							<%= "&nbsp;&nbsp;" %>

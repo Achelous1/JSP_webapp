@@ -23,7 +23,7 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
       controller : 'recommendationCtrl'
   })
   //route to reviews board
-  .when('/reviews.bctrl', {
+  .when('/reviews', {
       templateUrl: './public/route/reviews.jsp',
       controller : 'reviewsCtrl'
   })
@@ -51,9 +51,9 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
       templateUrl: './public/php/SessionAttributeSet.jsp'
   })
   //route back to main otherwise
-//  .otherwise({
-//    redirectTo: '/'
-//  });
+  .otherwise({
+    redirectTo: '/'
+  });
 /*  $locationProvider.html5Mode(true);
 */});
 

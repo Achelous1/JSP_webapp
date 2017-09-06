@@ -16,6 +16,17 @@ public class BoardDTO {
 	private int read_cnt;
 	private int child_cnt;
 	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+	@Override
+	public String toString() {
+		return "BoardDTO [board_no=" + board_no + ", mem_no=" + mem_no + ", title=" + title + ", contents=" + contents
+				+ ", img=" + img + ", post_date=" + post_date + ", ref=" + ref + ", step=" + step + ", lev=" + lev
+				+ ", read_cnt=" + read_cnt + ", child_cnt=" + child_cnt + "]";
+	}
 	public int getBoard_no() {
 		return board_no;
 	}

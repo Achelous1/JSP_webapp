@@ -47,8 +47,6 @@ public class MemberDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			System.out.println(rs);
-			
 			while(rs.next()) {
 				mem.setMem_no(rs.getInt("mem_no"));
 				mem.setMem_id(rs.getString("mem_id"));

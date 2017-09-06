@@ -19,11 +19,12 @@ public class BoardListCmd implements BoardCmd {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		//선언부분
 		BoardDAO dao = new BoardDAO();
 		ArrayList<BoardDTO> list;
-		//Gson gson = new Gson();
+		Gson gson = new Gson();
 		
+		//구현부분
 		System.out.println("list()");
 		int pageCnt = 0;
 		String curPage = request.getParameter("curPage");
@@ -33,7 +34,7 @@ public class BoardListCmd implements BoardCmd {
 		}
 		
 		list = dao.boardList(curPage);
-		/*
+		
 		String json = gson.toJson(list);
         try {
     		response.setContentType("application/json");
@@ -42,10 +43,11 @@ public class BoardListCmd implements BoardCmd {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
-		request.setAttribute("boardList", list);
+
+        request.setAttribute("boardList", list);
+        request.setAttribute("json", json.toString());
 		System.out.println(list);
-		//System.out.println(json);
+		System.out.println(json);
 		pageCnt = dao.boardPageCnt();
 		request.setAttribute("pageCnt", pageCnt);
 	}
