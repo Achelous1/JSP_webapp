@@ -155,7 +155,7 @@ public class BoardDAO {
 		
 		try {
 			conn = ds.getConnection();
-			String sql = "UPDATE BOARD SET READ_CNT = READ_CNT +1 WHERE BOARD_NO = ?"; 
+			String sql = "SELECT * FROM BOARD WHERE BOARD_NO = ?"; 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(inputBoard_no));
 			rs = pstmt.executeQuery();

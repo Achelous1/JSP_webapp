@@ -45,9 +45,10 @@ public class BoardListCmd implements BoardCmd {
 		}
 
         request.setAttribute("boardList", list);
-        request.setAttribute("json", json.toString());
+        request.setAttribute("json", json);
 		System.out.println(list);
 		System.out.println(json);
+		
 		pageCnt = dao.boardPageCnt();
 		request.setAttribute("pageCnt", pageCnt);
 	}

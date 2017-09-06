@@ -68,7 +68,7 @@ public class BoardFrontCtrl extends HttpServlet {
 		else if(cmdURI.equals("/viewBoard.bctrl")) {
 			cmd = new BoardReadCmd();
 			cmd.execute(request, response);
-			viewPage = "viewBoard.jsp";
+			viewPage = "public/php/viewBoardRev.jsp";
 		}
 		//검색 버튼
 		else if(cmdURI.equals("/search.bctrl")) {

@@ -22,7 +22,6 @@
 </div>
 
 <%
-	ArrayList<BoardDTO> list = (ArrayList<BoardDTO>)session.getAttribute("boardList");
 	String json = (String)session.getAttribute("json");
 %>
 <%-- <c:forEach items="${ list }" var="dto">
@@ -30,9 +29,7 @@
 		<table>
 			<td rowspan="2" style="width: 100px;"><img src="./public/img/tokyo.jpg" width="90px" height="90px" align="left"></td>
 			<td style="margin-left: 10px">
-				<font style="font-size:25px">
-				<a href="viewBoard.bctrl?board_no=${ dto.board_no }">{{ dto.title }}</a>
-				</font>
+				<font style="font-size:25px"><a href="viewBoard.bctrl?board_no=${ dto.board_no }">{{ dto.title }}</a></font>
 			</td>
 			<tr>
 				<td style="margin-left: 10px">${dto.content}</td>
@@ -42,46 +39,37 @@
 			</tr>
 		</table>
 	</div>
-</c:forEach> --%>
-{{list}}
+</c:forEach>
+ --%>
 <div id="review_table" ng-repeat="x in list">
-
 	<table>
 		<td rowspan="2" style="width: 100px;"><img src="./public/img/tokyo.jpg" width="90px" height="90px" align="left"></td>
 		<td style="margin-left: 10px">
 			<font style="font-size:25px">
-			<a href="viewBoard.bctrl?board_no=${ x.board_no }">{{ x.title }}</a>
+			<a href="viewBoard.bctrl?board_no={{ x.board_no }}">{{ x.title }}</a>
 			</font>
 		</td>
 		<tr>
-			<td style="margin-left: 10px">{x.content | limitTo : 100 }</td>
+			<td style="margin-left: 10px">{{x.contents | limitTo : 100 }}...</td>
 		</tr>
 		<tr>
 			<input type="hidden" name="board_num" value="${ x.mem_no }">
 		</tr>
 	</table>
-
 </div>
 
 
 
 <script>
-storeData();
-function storeData(){
-	var data = "${ json }";
-	alert(data);
-}
-alert("${json}");
-var data = "<%= json %>";
-$scope.list = data;
+var boardList = <%= json %>;
 </script>
 
 <center>
 	<ul class="pagination pagination">
-	    <li><a href="#">1</a></li>
-	    <li><a href="#">2</a></li>
-	    <li><a href="#">3</a></li>
-	    <li><a href="#">4</a></li>
-	    <li><a href="#">5</a></li>
+	    <li><a href="reviews.bctrl?page=1">1</a></li>
+	    <li><a href="reviews.bctrl?page=2">2</a></li>
+	    <li><a href="reviews.bctrl?page=3">3</a></li>
+	    <li><a href="reviews.bctrl?page=4">4</a></li>
+	    <li><a href="reviews.bctrl?page=5">5</a></li>
 	</ul>
 </center>
