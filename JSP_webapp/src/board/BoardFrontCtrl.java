@@ -40,10 +40,10 @@ public class BoardFrontCtrl extends HttpServlet {
 		String viewPage = null;
 		
 		//글 목록 조회
-		if(cmdURI.equals("/reviews")){
+		if(cmdURI.equals("/reviews.bctrl")){
 			cmd = new BoardListCmd();
 			cmd.execute(request, response);
-			viewPage = "reviews.bctrl";
+			viewPage = "public/php/boardRedirect.jsp";
 		}
 		else if(cmdURI.equals("/boardList.bctrl")){
 			cmd = new BoardListCmd();

@@ -54,8 +54,43 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
   .otherwise({
     redirectTo: '/'
   });
-/*  $locationProvider.html5Mode(true);
-*/});
+});
+//ng-directives
+app.directive('passwordConfirm', ['$parse', function ($parse) {
+	 return {
+	    restrict: 'A',
+	    scope: {
+	      matchTarget: '=',
+	    },
+	    require: 'ngModel',
+	    link: function link(scope, elem, attrs, ctrl) {
+	      var validator = function (value) {
+	        ctrl.$setValidity('match', value === scope.matchTarget);
+	        return value;
+	      }
+	 
+	      ctrl.$parsers.unshift(validator);
+	      ctrl.$formatters.push(validator);
+	      
+	      // This is to force validator when the original password gets changed
+	      scope.$watch('matchTarget', function(newval, oldval) {
+	        validator(ctrl.$viewValue);
+	      });
+
+	    }
+	  };
+	}]);
+
+//cancel button
+function moveTo(url){
+    window.location.assign(url);
+}
+
+//check ID availability
+function checkId(user_id){
+	var id = user_id;
+	window.open("checkId.mctrl?user_id=" + id, "Check_availability", "width=300,height=300");
+}
 
 //date picker
 $('#datePicker').daterangepicker({
@@ -67,23 +102,3 @@ $('#datePicker').daterangepicker({
 }, function(start, end, label) {
   console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
 });
-
-//cancel button
-function moveTo(url){
-    window.location.assign(url);
-}
-
-//alert modal
-// var modalInstance = $modal.open({
-//     controller: ModalInstanceCtrl,
-//     backdrop: true,
-//     keyboard: true,
-//     backdropClick: true,
-//     size: 'lg',
-//     resolve: {
-//       data: function () {
-//         return $scope.data;
-//       }
-//     }
-//   });
-

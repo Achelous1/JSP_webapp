@@ -3,7 +3,7 @@
 <h1>회원가입</h1>
 
 <div class="col-sm-10 well" style="margin-top: 40px;" ng-controller="signupCtrl">
-  <form action="/JSP_webapp/signup.mctrl" method="POST">
+  <form action="/JSP_webapp/signup.mctrl" method="POST" name="signUpForm"  novalidate>
     <!--Start of form control -->
     <div class="col-sm-7">
       <div class="col-xs-12">
@@ -12,24 +12,25 @@
           <label>ID</label>
         </div>
         <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="button" style="width: 30%; float: right;" class="form-control" name="check_overlap" value="중복확인">
-          <input type="text" style="width: 65%; margin-right: 5%;" class="form-control" ng-model="user_id" name="user_id" placeholder="아이디 입력">
+          <input type="button" style="width: 30%; float: right;" class="form-control" value="중복확인" onclick="checkId(document.getElementById('user_id').value);">
+          <input type="text" style="width: 65%; margin-right: 5%;" class="form-control" id="user_id" name="user_id" placeholder="아이디 입력">
         </div>
 
         <!-- password input -->
         <div class="col-xs-3" style="margin-top: 20px;">
           <label>비밀번호</label>
         </div>
-        <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="password" class="form-control" name="user_pw" placeholder="비밀번호 입력" required>
+        <div class="col-xs-9" style="margin-top: 20px;" ng-class="{'has-error':!signUpForm.user_pw.$valid}">
+          <input type="password" class="form-control" name="user_pw" ng-model="user_pw" placeholder="비밀번호 입력" required>
         </div>
 
         <!-- confirm password input -->
         <div class="col-xs-3" style="margin-top: 20px;">
           <label>비밀번호 확인</label>
         </div>
-        <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="password" class="form-control" name="pw_confirm" placeholder="비밀번호 입력" required>
+        <div class="col-xs-9" style="margin-top: 20px;" ng-class="{'has-error':!signUpForm.pw_confirm.$valid}">
+          <input type="password" class="form-control" name="pw_confirm" ng-model="pw_confirm" placeholder="비밀번호 입력" required password-confirm match-target="user_pw">
+       	  <span class="help-block" ng-show="signUpForm.pw_confirm.$error.match">비밀번호가 같지 않습니다</span>
         </div>
 
         <!-- name input -->
@@ -39,8 +40,7 @@
         <div class="col-xs-9" style="margin-top: 20px;">
           <input type="text" class="form-control" name="name" placeholder="이름 입력" required>
         </div>
-
-
+        
         <!-- gender input -->
         <div class="col-xs-3" style="margin-top: 20px;">
           <label>성별</label>
@@ -88,7 +88,8 @@
 
         <!-- submit and cancel -->
         <div class="col-xs-12" style="text-align: right; margin-top: 20px;">
-          <input type="submit" class="btn btn-success" style="width: 100px; margin-right: 30px;" value="가입하기">
+          
+          <input type="submit" class="btn btn-success" style="width: 100px; margin-right: 30px;" value="가입하기" ng-disabled="signUpForm.$invalid">
           <input type="button" class="btn btn-default" style="width: 100px;  float:right;" onclick="moveTo('index.html')" value="취소">
         </div>
       </div>

@@ -17,33 +17,13 @@
       <tr>
         <th colspan="3">2017/9/27 ~ 2017/10/02 까지 대구에서 도쿄로~</th>
       </tr>
-      <tbody>
+      <tbody ng-repeat = "x in matchList">
         <tr>
-          <td>1</td>
-          <td width="80%">ooo님과 매칭 되었습니다</td>
-          <td>
-            <div class="btn-group">
-                <a class="btn btn-primary btn-sm" href="#!/myMatchList.cbs/talkStranger/{{ chat_no }}">대화하기</a>
-                <a class="btn btn-danger btn-sm">나가기</a>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td width="60%">ooo님과 매칭 되었습니다</td>
+          <td>{{$index + 1}}</td>
+          <td width="60%">{{ x.Name }}님과 매칭 되었습니다</td>
           <td>
               <div class="btn-group">
-                  <a class="btn btn-primary btn-sm" href="#!/myMatchList.cbs/talkStranger/{{ chat_no }}">대화하기</a>
-                  <a class="btn btn-danger btn-sm">나가기</a>
-              </div>
-          </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td width="60%">ooo님과 매칭 되었습니다</td>
-          <td>
-              <div class="btn-group">
-                  <a class="btn btn-primary btn-sm" href="#!/myMatchList.cbs/talkStranger/{{ chat_no }}">대화하기</a>
+                  <a class="btn btn-primary btn-sm" href="#!/myMatchList.cbs/talkStranger">대화하기</a>
                   <a class="btn btn-danger btn-sm">나가기</a>
               </div>
           </td>

@@ -13,7 +13,6 @@
 		BoardDTO content = (BoardDTO)request.getAttribute("boardRead");
     	session.setAttribute("content", content);
 	%>
-	페이지 리다이렉트
 <script>
 	moveTo("index.jsp#!/viewBoard");
 </script>

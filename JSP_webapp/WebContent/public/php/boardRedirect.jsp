@@ -17,7 +17,6 @@ pageEncoding="UTF-8"%>
     session.setAttribute("json", json);
     
 %>
-Redirecting review list
 <script>
 	moveTo('index.jsp#!/reviews');
 </script>

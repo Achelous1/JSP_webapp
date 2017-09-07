@@ -45,7 +45,12 @@ public class MemberFrontCtrl extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("public/php/SessionAttributeSet.jsp");
 			rd.forward(request, response);
+		}else if(cmdURI.equals("/checkId.mctrl")) {
+			MemberCmd cmd = new MemberCheckIdCmd();
+			cmd.execute(request, response);
 			
+			RequestDispatcher rd = request.getRequestDispatcher("public/php/checkId.jsp");
+			rd.forward(request, response);
 		}
 	}
 

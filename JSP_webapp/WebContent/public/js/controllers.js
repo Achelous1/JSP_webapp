@@ -12,21 +12,7 @@ app.controller('recommendationCtrl', function ($scope, $http) {
 
 //review board control
 app.controller('reviewsCtrl', ['$scope', '$window', '$http',  function ($scope, $http, $window) {
-    //moveTo('search.bctrl?page=index.html#!/reviews');
-    // $scope.getListFromServer = function(){
-    //     $http({
-    //         method : 'GET',
-    //         url : '/JSP_webapp/reviews.bctrl'
-    //     }).success(function(data, status, headers, config) {
-    //             $scope.list = data;
-    //     }).error(function(data, status, headers, config) {
-    //             // called asynchronously if an error occurs
-    //             // or server returns response with an error status.
-    //     });
-    // };
-	console.log(boardList);
 	$scope.list = boardList;
-	console.log($scope.list);
 }]);
 
 //write board control
@@ -35,7 +21,8 @@ app.controller('writeCtrl', function ($scope, $http) {
 
 //sign up control
 app.controller('signupCtrl', function ($scope, $http) {
-
+	$scope.user_pw = null;
+	$scope.pw_confirm = null;
 });
 
 //view contents control
@@ -59,6 +46,6 @@ app.controller('matchListCtrl', function ($scope, $http) {
         alert("get Chat List");
     }
     //get list from JSON
-    $scope.list = listJSON;
+    $scope.matchList = myJSON;
 });
 

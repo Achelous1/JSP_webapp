@@ -114,4 +114,42 @@ public class MemberDAO {
 
 	}
 	
+	public boolean checkId(String mem_id) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean isAvailable = true;
+		try {
+			String sql = " SELECT * FROM MEMBERS WHERE MEM_ID = ?";
+			
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			pstmt.setString(1, mem_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				isAvailable = false;
+			} else {
+				isAvailable = true;
+			}
+			
+		} catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null)
+					conn.close();
+				if(pstmt != null)
+					pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return isAvailable;
+	}
+	
 }

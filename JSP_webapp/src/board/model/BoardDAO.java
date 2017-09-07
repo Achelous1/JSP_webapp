@@ -146,7 +146,7 @@ public class BoardDAO {
 	}
 	
 	//게시판 열람
-	public BoardDTO boardRead(String inputBoard_no){
+	public BoardDTO boardRead(int inputBoard_no){
 		BoardDTO writing = new BoardDTO();
 		
 		Connection conn = null;
@@ -157,7 +157,7 @@ public class BoardDAO {
 			conn = ds.getConnection();
 			String sql = "SELECT * FROM BOARD WHERE BOARD_NO = ?"; 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(inputBoard_no));
+			pstmt.setInt(1, inputBoard_no);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
