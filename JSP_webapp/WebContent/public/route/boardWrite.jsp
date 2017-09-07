@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div class="container">
+<form action="boardWrite.bctrl" method="POST">
 <table class="table table-default">
     <thead>
         <h1> 게시글 올리기 </h1>
     </thead>
     <tbody>
-        <form action="boardWrite.bctrl" method="POST">
+        
             <tr>
                 <th>제목</th>
                 <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control"/></td>
@@ -48,7 +49,8 @@
                     <input type="submit" value="등록" class="btn btn-primary pull-right"/>
                 </td>
             </tr>
-        </form>
+        
     </tbody>
 </table>
+</form>
 </div>
