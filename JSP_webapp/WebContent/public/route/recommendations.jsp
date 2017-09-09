@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import = "java.util.ArrayList" %>
+<%@ page import = "board.model.BoardDTO" %>
 <h1>추천 여행지</h1>
 <div class="form-group" style="margin-top:50px; padding-left: 60%;">
 	<select class="form-control" name="search_type" ng-model="search_type" style="width:150px; float:left; height: 30px;" placeholder="검색 유형">

@@ -3,6 +3,8 @@ package member.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import member.model.MemberDAO;
 
 public class MemberCheckIdCmd implements MemberCmd{
@@ -18,6 +20,12 @@ public class MemberCheckIdCmd implements MemberCmd{
 			isAvailable = dao.checkId(mem_id);
 		}
 		request.setAttribute("isAvailable", isAvailable);
+	}
+
+	@Override
+	public void execute(MultipartRequest multi, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

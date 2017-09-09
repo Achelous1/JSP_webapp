@@ -15,7 +15,6 @@ pageEncoding="UTF-8"%>
 <%
     String json = (String)request.getAttribute("json");
     session.setAttribute("json", json);
-    
 %>
 <script>
 	moveTo('index.jsp#!/reviews');

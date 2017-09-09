@@ -1,5 +1,6 @@
 //login controller
 app.controller('mainCtrl', function ($scope, $http, $modal) {
+	$scope.list = boardlist;
 });
 //recommendations board control
 app.controller('recommendationCtrl', function ($scope, $http) {
@@ -23,6 +24,12 @@ app.controller('writeCtrl', function ($scope, $http) {
 app.controller('signupCtrl', function ($scope, $http) {
 	$scope.user_pw = null;
 	$scope.pw_confirm = null;
+	$scope.user_id = null;
+	$scope.birthdate = null;
+	$scope.phoneNo = null;
+	$scope.name = null;
+	$scope.gender = null;
+	$scope.checkedId = checkedId;
 });
 
 //view contents control

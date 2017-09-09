@@ -15,7 +15,7 @@
         String user_id = member.getMem_id();
         String user_name = member.getMem_name();
         int user_no = member.getMem_no();
-        String mem_img = member.getMem_img() + user_no + ".jpg";
+        String mem_img = request.getAttribute("mem_img") + ".jpg";
    
         session.setAttribute("user_id", user_id);
         session.setAttribute("user_name", user_name);

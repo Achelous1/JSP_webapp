@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <h3 style="color: rgb(133,133,133);">여행일정</h3>
+<%
+    String json = (String)request.getAttribute("json");
+    session.setAttribute("json", json);
+%>
 <div id="Menu" class="col-sm-10">
 	<form action="" method="post">
 		<div class="form-group row">
@@ -39,30 +43,13 @@
 
 <div id="main_best" class="col-sm-7">
 	<div id="Content1">베스트 후기</div>
-	<div style="padding: 50px 0px 0px 33px;">
+	<div style="padding: 50px 0px 0px 33px;" ng-repeat="x in list">
 		<img src="./public/img/okinawa.jpg" width="120px" height="120px" align="left"></div>
-	<div id="Content2" div style="padding: 0px 0px 0px 190px;">오키나와에서의 환상적인 여행!<br />
+	<div id="Content2" div style="padding: 0px 0px 0px 190px;">{{x.title}}<br />
 		<div id="Content3" div style="padding: 12px 0px 0px 0px;">
-			모르는 사람과 함께한 신비하고도 환상적인 오키나와 여행!<br /> 모르는 사람과 함께한 신비하고도 환상적인 오키나와 여행!<br /> 모르는 사람과 함께한 신비하고도 환상적인 오키나와 여행!</div>
+		<p>{{x.content | limitTo : 100}}</p></div>
 	</div>
 
-	<div style="padding: 50px 0px 0px 33px;">
-		<div id="Content1" div style="padding: 0px 0px 11px 0px;"></div>
-		<img src="./public/img/okinawa.jpg" width="120px" height="120px" align="left"></div>
-	<div id="Content2" div style="padding: 0px 0px 0px 190px;">오키나와에서의 환상적인 여행!<br />
-		<div id="Content3" div style="padding: 12px 0px 0px 0px;">
-			모르는 사람과 함께한 신비하고도 환상적인 오키나와 여행!<br /> 모르는 사람과 함께한 신비하고도 환상적인 오키나와 여행!<br /> 모르는 사람과 함께한 신비하고도 환상적인 오키나와 여행!</div>
-	</div>
-
-	<div style="padding: 50px 0px 0px 33px;">
-		<div id="Content1" div style="padding: 0px 0px 11px 0px;"></div>
-		<img src="./public/img/okinawa.jpg" width="120px" height="120px" align="left">
-	</div>
-
-	<div id="Content2" div style="padding: 0px 0px 0px 190px;">오키나와에서의 환상적인 여행!<br />
-		<div id="Content3" div style="padding: 12px 0px 0px 0px;">
-			모르는 사람과 함께한 신비하고도 환상적인 오키나와 여행!<br /> 모르는 사람과 함께한 신비하고도 환상적인 오키나와 여행!<br /> 모르는 사람과 함께한 신비하고도 환상적인 오키나와 여행!</div>
-	</div>
 </div>
 
 <div style="padding: 30px;" id="main_social" class="col-sm-3">
@@ -74,3 +61,7 @@
 		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</div>
 </div>
+
+<script>
+var boardList = <%= json %>;
+</script>

@@ -52,7 +52,6 @@ public class MemberDAO {
 				mem.setMem_id(rs.getString("mem_id"));
 				mem.setMem_pw(rs.getString("mem_pw"));
 				mem.setMem_name(rs.getString("mem_name"));
-				mem.setMem_img(rs.getString("mem_img"));
 			}
 			System.out.println(mem.getMem_id() + " " + mem.getMem_pw() + " logged in.");
 			

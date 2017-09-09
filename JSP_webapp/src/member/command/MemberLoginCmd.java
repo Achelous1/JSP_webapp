@@ -3,6 +3,8 @@ package member.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import member.model.*;
 
 public class MemberLoginCmd implements MemberCmd{
@@ -16,6 +18,12 @@ public class MemberLoginCmd implements MemberCmd{
 		MemberDTO memInfo = mem.checkLogin(id, pw);
 		
 		request.setAttribute("memInfo", memInfo);
+	}
+
+	@Override
+	public void execute(MultipartRequest multi, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

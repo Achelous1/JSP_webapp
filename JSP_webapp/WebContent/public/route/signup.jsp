@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <h1>회원가입</h1>
 
-<div class="col-sm-10 well" style="margin-top: 40px;" ng-controller="signupCtrl">
-  <form action="/JSP_webapp/signup.mctrl" method="POST" name="signUpForm"  novalidate>
+<div class="col-sm-10 well" style="margin-top: 40px;">
+  <form action="/JSP_webapp/signup.mctrl" method="POST" name="signUpForm" enctype="multipart/form-data">
     <!--Start of form control -->
     <div class="col-sm-7">
       <div class="col-xs-12">
@@ -11,9 +11,11 @@
         <div class="col-xs-3" style="margin-top: 20px;">
           <label>ID</label>
         </div>
-        <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="button" style="width: 30%; float: right;" class="form-control" value="중복확인" onclick="checkId(document.getElementById('user_id').value);">
-          <input type="text" style="width: 65%; margin-right: 5%;" class="form-control" id="user_id" name="user_id" placeholder="아이디 입력">
+        <div class="col-xs-9" style="margin-top: 20px;" >
+	        <input type="button" style="width: 30%; float: right;" class="form-control" value="중복확인" onclick="checkId(document.getElementById('user_id').value);">
+	 		    <div ng-class="{'has-error':!signUpForm.user_id.$valid}">
+	          <input type="text" style="width: 65%; margin-right: 5%;" class="form-control" id="user_id" name="user_id" placeholder="아이디 입력" required>
+      		</div>
         </div>
 
         <!-- password input -->
@@ -37,20 +39,20 @@
         <div class="col-xs-3" style="margin-top: 20px;">
           <label>이름</label>
         </div>
-        <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="text" class="form-control" name="name" placeholder="이름 입력" required>
+        <div class="col-xs-9" style="margin-top: 20px;" ng-class="{'has-error':!signUpForm.name.$valid}">
+          <input type="text" class="form-control" name="name" placeholder="이름 입력" ng-model="name" required>
         </div>
         
         <!-- gender input -->
         <div class="col-xs-3" style="margin-top: 20px;">
           <label>성별</label>
         </div>
-        <div class="col-xs-9" style="margin-top: 20px;">
+        <div class="col-xs-9" style="margin-top: 20px;" ng-model="gender">
           <div class="radio">
-            <label class="radio-inline"><input type="radio" name="gender" value="M" required>남자</label>
+            <label class="radio-inline"><input type="radio" ng-bind="gender" name="gender" value="M" required>남자</label>
           </div>
           <div class="radio">
-            <label class="radio-inline"><input type="radio" name="gender" value="F" required>여자</label>
+            <label class="radio-inline"><input type="radio" ng-bind="gender" name="gender" value="F" required>여자</label>
           </div>
         </div>
 
@@ -58,16 +60,16 @@
         <div class="col-xs-3" style="margin-top: 20px;">
           <label>생년월일</label>
         </div>
-        <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="text" class="form-control" name="birthdate" placeholder="ex.) 2000-01-01" required>
+        <div class="col-xs-9" style="margin-top: 20px;" ng-class="{'has-error':!signUpForm.birthdate.$valid}">
+          <input type="text" class="form-control" ng-model="birthdate" name="birthdate" placeholder="ex.) 2000-01-01" required>
         </div>
 
         <!-- phone number input -->
         <div class="col-xs-3" style="margin-top: 20px;">
           <label>핸드폰 번호</label>
         </div>
-        <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="text" class="form-control" name="phoneNo" placeholder="ex.) 010-1111-1111" required>
+        <div class="col-xs-9" style="margin-top: 20px;" ng-class="{'has-error':!signUpForm.phoneNo.$valid}">
+          <input type="text" class="form-control" ng-model="phoneNo" name="phoneNo" placeholder="ex.) 010-1111-1111" required>
         </div>
 
         <!-- email input -->
@@ -75,20 +77,19 @@
           <label>이메일주소</label>
         </div>
         <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="email" class="form-control" name="email" placeholder="ex.) email@domain.com" required>
+          <input type="email" class="form-control" name="email" placeholder="ex.) email@domain.com">
         </div>
 
         <!-- address input -->
         <div class="col-xs-3" style="margin-top: 20px;">
           <label>주소</label>
         </div>
-        <div class="col-xs-9" style="margin-top: 20px;">
-          <input type="text" class="form-control" name="addr" placeholder="주소입력" required>
+        <div class="col-xs-9" style="margin-top: 20px;" ng-class="{'has-error':!signUpForm.addr.$valid}">
+          <input type="text" class="form-control" ng-model="addr" name="addr" placeholder="주소입력" required>
         </div>
 
         <!-- submit and cancel -->
         <div class="col-xs-12" style="text-align: right; margin-top: 20px;">
-          
           <input type="submit" class="btn btn-success" style="width: 100px; margin-right: 30px;" value="가입하기" ng-disabled="signUpForm.$invalid">
           <input type="button" class="btn btn-default" style="width: 100px;  float:right;" onclick="moveTo('index.html')" value="취소">
         </div>
@@ -122,4 +123,6 @@ function handleFileSelect() {
         
     reader.readAsDataURL(files);    
 }
+
+var checkedId = <%= session.getAttribute("checkedId") %>;
 </script>

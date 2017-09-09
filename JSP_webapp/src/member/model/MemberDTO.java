@@ -13,19 +13,12 @@ public class MemberDTO {
 	private String phoneno;
 	private String email;
 	private String addr;
-	private String mem_img;
 	
 	@Override
 	public String toString() {
 	return "MemberDTO [mem_no=" + mem_no + ", mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name
 			+ ", mem_gender=" + mem_gender + ", birthdate=" + birthdate + ", age=" + age + ", phoneno=" + phoneno
-			+ ", email=" + email + ", addr=" + addr + ", mem_img=" + mem_img + "]";
-	}
-	public String getMem_img() {
-		return mem_img;
-	}
-	public void setMem_img(String string) {
-		this.mem_img = string;
+			+ ", email=" + email + ", addr=" + addr + "]";
 	}
 	public int getMem_no() {
 		return mem_no;
