@@ -24,23 +24,7 @@
 <%
 	String json = (String)session.getAttribute("json");
 %>
-<%-- <c:forEach items="${ list }" var="dto">
-	<div id="review_table">
-		<table>
-			<td rowspan="2" style="width: 100px;"><img src="./public/img/tokyo.jpg" width="90px" height="90px" align="left"></td>
-			<td style="margin-left: 10px">
-				<font style="font-size:25px"><a href="viewBoard.bctrl?board_no=${ dto.board_no }">{{ dto.title }}</a></font>
-			</td>
-			<tr>
-				<td style="margin-left: 10px">${dto.content}</td>
-			</tr>
-			<tr>
-				<input type="hidden" name="board_num" value="${ dto.mem_no }">
-			</tr>
-		</table>
-	</div>
-</c:forEach>
- --%>
+
 <div id="review_table" ng-repeat="x in list">
 	<table>
 		<td rowspan="2" style="width: 100px;"><img src="./public/img/tokyo.jpg" width="90px" height="90px" align="left"></td>

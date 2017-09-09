@@ -15,9 +15,12 @@
         String user_id = member.getMem_id();
         String user_name = member.getMem_name();
         int user_no = member.getMem_no();
+        String mem_img = member.getMem_img() + user_no + ".jpg";
+   
         session.setAttribute("user_id", user_id);
         session.setAttribute("user_name", user_name);
         session.setAttribute("user_no", user_no);
+        session.setAttribute("mem_img", mem_img);
         
         response.sendRedirect("http://localhost:8282/JSP_webapp/index.jsp");
     %>

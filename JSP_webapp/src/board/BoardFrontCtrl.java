@@ -55,7 +55,7 @@ public class BoardFrontCtrl extends HttpServlet {
 			viewPage = "boardWrite.jsp";
 		}*/
 		//글 작성 처리
-		else if(cmdURI.equals("/boardWrite.bctrl")) {
+		if(cmdURI.equals("/boardWrite.bctrl")) {
 			System.out.println("write()");
 			cmd = new BoardWriteCmd();
 			cmd.execute(request, response);
@@ -76,12 +76,16 @@ public class BoardFrontCtrl extends HttpServlet {
 		else if(cmdURI.equals("/search.bctrl")) {
 			cmd = new BoardSearchCmd();
 			cmd.execute(request, response);
-			viewPage = (String) request.getAttribute("page");
+			String page = (String) request.getAttribute("page");
+			if(page.equals("review"))
+				viewPage="public/php/viewBoardRev.jsp";
+			else
+				viewPage="public/php/viewBoardRec.jsp";
 			System.out.println(viewPage);
 		}
 		
 		// 글수정화면 제공
-		if(cmdURI.equals("/boardUpdateForm.bctrl")){
+		else if(cmdURI.equals("/boardUpdateForm.bctrl")){
 			
 			cmd = new BoardUpdateFormCmd();
 			cmd.execute(request, response);
@@ -98,7 +102,7 @@ public class BoardFrontCtrl extends HttpServlet {
 		if(cmdURI.equals("/boardDelete.bctrl")){
 			cmd = new BoardDeleteCmd();
 			cmd.execute(request, response);
-			viewPage = "boardList.bctrl";
+			viewPage = "reviews.bctrl";
 		}
 		
 		// 검색

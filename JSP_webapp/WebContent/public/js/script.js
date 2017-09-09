@@ -56,6 +56,7 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
   });
 });
 //ng-directives
+//password confirm and required directive
 app.directive('passwordConfirm', ['$parse', function ($parse) {
 	 return {
 	    restrict: 'A',
@@ -76,6 +77,26 @@ app.directive('passwordConfirm', ['$parse', function ($parse) {
 	      scope.$watch('matchTarget', function(newval, oldval) {
 	        validator(ctrl.$viewValue);
 	      });
+
+	    }
+	  };
+	}]);
+
+app.directive('availConfirm', ['$parse', function ($parse) {
+	 return {
+	    restrict: 'A',
+	    scope: {
+	      matchTarget: '=',
+	    },
+	    require: 'ngModel',
+	    link: function link(scope, elem, attrs, ctrl) {
+	      var validator = function (value) {
+	        ctrl.$setValidity('match', value === scope.matchTarget);
+	        return value;
+	      }
+	 
+	      ctrl.$parsers.unshift(validator);
+	      ctrl.$formatters.push(validator);
 
 	    }
 	  };
@@ -102,3 +123,4 @@ $('#datePicker').daterangepicker({
 }, function(start, end, label) {
   console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
 });
+

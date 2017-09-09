@@ -13,9 +13,9 @@
         <h1 style="float:left;">게시글보기</h1>
 	        <div class="btn-group"  style="float: right; padding-top: 40px;">
 			  <input type="button" value="글쓰기" onclick="moveTo('#!/boardWrite');" class="btn btn-primary btn-sm">
-	          <input type="button" value="글수정" onclick="moveTo('boardUpdateForm.bctrl?board_no=${boardRead.board_no}');" class="btn btn-warning btn-sm">
-	          <input type="button" value="글삭제" onclick="moveTo('boardDelete.bctrl?board_no=${boardRead.board_no}');" class="btn btn-danger btn-sm">
-	          <input type="button" value="답글작성" onclick="moveTo('boardReplyForm.bctrl?board_no=${boardRead.board_no}');" class="btn btn-success btn-sm">
+	          <input type="button" value="글수정" onclick="moveTo('boardUpdateForm.bctrl?board_no=${content.board_no}');" class="btn btn-warning btn-sm">
+	          <input type="button" value="글삭제" onclick="moveTo('boardDelete.bctrl?board_no=${content.board_no}');" class="btn btn-danger btn-sm">
+	          <input type="button" value="답글작성" onclick="moveTo('boardReplyForm.bctrl?board_no=${content.board_no}');" class="btn btn-success btn-sm">
 			  <input type="button" value="목록으로" onclick="moveTo('/JSP_webapp/reviews.bctrl');" class="btn btn-default btn-sm">
 			</div>
         </td>

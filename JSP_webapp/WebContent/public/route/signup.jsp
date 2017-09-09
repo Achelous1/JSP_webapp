@@ -95,8 +95,31 @@
       </div>
     </div>
     <div class="col-sm-5">
-      <img src="./public/img/user_pic_logout.PNG" width="180px" height="180px"><br/>
-      <input style="margin-top: 20px;" type="file" name="프로필 사진 추가">
+	  <div id="holder" ng-hide="mem_img.value != null">
+	    <img src="./public/img/user_pic_logout.PNG" width="180px" height="180px"><br/>
+	  </div>
+      <input id="mem_img" name="mem_img" style="margin-top: 20px;" type="file" ng-model="mem_img" name="프로필 사진 추가" onchange="handleFileSelect();">
     </div>
   </form>
 </div>
+
+<script>
+//image handler
+function handleFileSelect() {
+    var files = document.getElementById('mem_img').files[0]; //파일 객체
+
+    var reader = new FileReader();
+
+    //파일정보 수집        
+    reader.onload = (function(theFile) {
+        return function(e) {
+            //이미지 뷰
+            var img_view = ['<img ng-model="img_preview" src="', e.target.result, '" title="', escape(theFile.name), ' "width="180px" height="180px"/>'].join('');                
+            document.getElementById('holder').innerHTML = img_view;
+        };
+
+    })(files);
+        
+    reader.readAsDataURL(files);    
+}
+</script>

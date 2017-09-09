@@ -61,7 +61,8 @@
               <li class="divider"></li>
               <li><a href="#!/myMatchList.cbs">마이매칭리스트</a></li>
             </ul>
-            <p style="float:right; margin-top: 10px; margin-right: 30px;">어서오세요. <strong><%= session.getAttribute("user_name") %></strong>님</p>
+            <img src="<%= session.getAttribute("mem_img") %>" width="30px" height="30px" style="float:right; margin-right: 10px;">
+            <p style="float:right; margin-top: 10px; margin-right: 10px;">어서오세요. <strong><%= session.getAttribute("user_name") %></strong>님</p>
            <%
             }
            %>
