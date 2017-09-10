@@ -10,7 +10,7 @@
 	<%
 		if(session != null)
 			session.invalidate();
-		response.sendRedirect("http://localhost:8282/JSP_webapp/index.jsp");
+		response.sendRedirect("http://localhost:8282/JSP_webapp/Main");
 	%>
 </body>
 </html>

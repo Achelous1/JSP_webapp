@@ -91,7 +91,7 @@
         <!-- submit and cancel -->
         <div class="col-xs-12" style="text-align: right; margin-top: 20px;">
           <input type="submit" class="btn btn-success" style="width: 100px; margin-right: 30px;" value="가입하기" ng-disabled="signUpForm.$invalid">
-          <input type="button" class="btn btn-default" style="width: 100px;  float:right;" onclick="moveTo('index.html')" value="취소">
+          <input type="button" class="btn btn-default" style="width: 100px;  float:right;" onclick="moveTo('/Main')" value="취소">
         </div>
       </div>
     </div>

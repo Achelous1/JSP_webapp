@@ -110,7 +110,7 @@ public class BoardDAO {
 			
 			try {
 			conn = ds.getConnection();
-			String sql = "SELECT * FROM BOARD WHERE ROWNUM <=3 ORDER BY read_cnt desc ";
+			String sql = "SELECT * FROM (SELECT * FROM BOARD ORDER BY READ_CNT DESC) WHERE ROWNUM <=3 ";
 			
 			pstmt = conn.prepareStatement(sql);	
 			

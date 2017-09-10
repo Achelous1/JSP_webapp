@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <h3 style="color: rgb(133,133,133);">여행일정</h3>
-<%
-    String json = (String)request.getAttribute("json");
-    session.setAttribute("json", json);
-%>
+
 <div id="Menu" class="col-sm-10">
 	<form action="" method="post">
 		<div class="form-group row">
@@ -42,12 +39,22 @@
 </div>
 
 <div id="main_best" class="col-sm-7">
-	<div id="Content1">베스트 후기</div>
-	<div style="padding: 50px 0px 0px 33px;" ng-repeat="x in list">
-		<img src="./public/img/okinawa.jpg" width="120px" height="120px" align="left"></div>
-	<div id="Content2" div style="padding: 0px 0px 0px 190px;">{{x.title}}<br />
-		<div id="Content3" div style="padding: 12px 0px 0px 0px;">
-		<p>{{x.content | limitTo : 100}}</p></div>
+	<h3>베스트 후기</h3>
+	<div id="topList" ng-repeat="x in topList">
+		<table>
+			<td rowspan="2" style="width: 100px;"><img src="./public/FILE_SYSTEM/BOARD_IMG/{{ x.board_no }}.jpg" width="90px" height="90px" align="left"></td>
+			<td style="margin-left: 10px">
+				<font style="font-size:25px">
+				<a href="viewBoard.bctrl?board_no={{ x.board_no }}">{{ x.title }}</a>
+				</font>
+			</td>
+			<tr>
+				<td style="margin-left: 10px">{{x.contents | limitTo : 100 }}...</td>
+			</tr>
+			<tr>
+				<input type="hidden" name="board_num" value="${ x.mem_no }">
+			</tr>
+		</table>
 	</div>
 
 </div>
@@ -62,6 +69,4 @@
 	</div>
 </div>
 
-<script>
-var boardList = <%= json %>;
-</script>
+

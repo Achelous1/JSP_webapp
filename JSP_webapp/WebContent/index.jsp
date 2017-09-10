@@ -5,8 +5,6 @@
 
 <html>
 <head>
-  <!-- <base href="/JSP_webapp/index.html"> -->
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--외부스타일시트¸-->
   <link rel="stylesheet" href="./public/css/style.css">
@@ -26,6 +24,9 @@
 </head>
 
 <body ng-app="layout" background="./public/img/background.jpg">
+<%
+    String json = (String)request.getAttribute("json");
+%>
   <!-- nav bar -->
   <div class="container-fluid">
     <div class="row content">
@@ -33,7 +34,7 @@
         <p style="font-family: 'lucida handwriting'; font-size: 30px; color: rgb(133,133,133); margin-top: 20px; rgb(38, 38, 38);">Lonely</p>
         <p style="font-family: 'lucida handwriting'; font-size: 30px; color: white; margin-left: 20px; margin-top:-20px;">Travelers</p>
         <ul class="nav nav-pills nav-stacked" style="text-align : right; margin-top : 50px;">
-          <li><a href="#!/">여행동반자 찾기</a></li>
+          <li><a href="Main">여행동반자 찾기</a></li>
           <li><a href="#!/myMatchList.cbs">My 매칭리스트</a></li>
           <li><a href="reviews.bctrl">이용후기</a></li>
           <li><a href="#!/recommendations.bctrl">추천여행지</a></li>
@@ -105,6 +106,9 @@
       </div>
     </div>
   </div>
+<script>
+	var topList = <%= json %>;
+</script>
 </body>
 
 </html>

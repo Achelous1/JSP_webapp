@@ -23,7 +23,7 @@ console.log(user_id);
    </select>
  <div class="input-group-btn">
 	 <input class="form-control" type="text" name="searchStr" ng-model="searchStr" placeholder="검색할 문맥" style="width:250px; float:left; height:30px;">
-	 <a id="searchBtn" href="#!/search.bctrl?page=index.html#!/reviews.bctrl&search_type={{ search_type }}&searchStr={{ searchStr }}" class="btn btn-info" style="height: 30px;">
+	 <a id="searchBtn" href="#!/search.bctrl?page=Main#!/reviews.bctrl&search_type={{ search_type }}&searchStr={{ searchStr }}" class="btn btn-info" style="height: 30px;">
 		 <i class="glyphicon glyphicon-search"></i>
 	 </a>
 	 <a onclick="checkLogin('#!/boardWrite', user_id);" class="btn btn-success" style="height:30px;">	<span class="glyphicon glyphicon-pencil"></span></a>

@@ -22,7 +22,7 @@
         session.setAttribute("user_no", user_no);
         session.setAttribute("mem_img", mem_img);
         
-        response.sendRedirect("http://localhost:8282/JSP_webapp/index.jsp");
+        response.sendRedirect("http://localhost:8282/JSP_webapp/Main");
     %>
 	
 	<%-- [<%= session.getAttribute("user_id") %>] --%>

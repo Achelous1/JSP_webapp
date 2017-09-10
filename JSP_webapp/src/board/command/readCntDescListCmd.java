@@ -31,8 +31,8 @@ public class readCntDescListCmd implements BoardCmd {
          e.printStackTrace();
       }
 
-        request.setAttribute("boardList", list);
-        request.setAttribute("json", json);
+      request.setAttribute("boardList", list);
+      request.setAttribute("json", json);
       System.out.println(list);
       System.out.println(json);
    }

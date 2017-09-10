@@ -7,7 +7,7 @@
   %>
   	<script>
   		alert("로그인 후 서비스를 이용해 주세요");
-  		moveTo("index.jsp");
+  		moveTo("Main");
   	</script>
   <%
   	} else if(session.getAttribute("user_id") != null) {

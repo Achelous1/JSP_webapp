@@ -50,16 +50,6 @@ public class BoardFrontCtrl extends HttpServlet {
 			cmd.execute(request, response);
 			viewPage = "boardList.jsp";
 		}
-		//조회수 상위 3개 목록 조회
-		else if(cmdURI.equals("/index.jsp")){
-			cmd = new readCntDescListCmd();
-			cmd.execute(request, response);
-			viewPage = "index.jsp";
-		}
-		//글 작성 화면 제공
-		/*else if(cmdURI.equals("/boardWrite")) {
-			viewPage = "boardWrite.jsp";
-		}*/
 		//글 작성 처리
 		else if(cmdURI.equals("/boardWrite.bctrl")) {
 			System.out.println("write()");

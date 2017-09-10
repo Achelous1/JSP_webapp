@@ -8,5 +8,4 @@
     <param-name>weblogic.httpd.inputCharset./*</param-name>
     <param-value>UTF-8</param-value>
   </context-param>
-
 </web-app>

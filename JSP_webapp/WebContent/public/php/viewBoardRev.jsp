@@ -14,7 +14,7 @@
     	session.setAttribute("content", content);
 	%>
 <script>
-	moveTo("index.jsp#!/viewBoard");
+	moveTo("Main#!/viewBoard");
 </script>
 </body>
 </html>

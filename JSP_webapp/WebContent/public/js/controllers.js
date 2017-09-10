@@ -1,7 +1,7 @@
 //login controller
-app.controller('mainCtrl', function ($scope, $http, $modal) {
-	$scope.list = boardlist;
-});
+app.controller('mainCtrl', ['$scope', '$window', '$http', function ($scope, $http, $modal, $window) {
+	$scope.topList = topList;
+}]);
 //recommendations board control
 app.controller('recommendationCtrl', function ($scope, $http) {
     $scope.getBoardList = function (result) {

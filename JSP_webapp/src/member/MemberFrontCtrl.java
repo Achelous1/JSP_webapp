@@ -52,7 +52,7 @@ public class MemberFrontCtrl extends HttpServlet {
 			//이미지 파일 업로드
 			FileUpload.uploadImage(request, multi, img_path, img_type);
 
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/Main");
 			rd.forward(request, response);
 		//로그인을 했을 경우
 		}else if(cmdURI.equals("/login.mctrl")) {
