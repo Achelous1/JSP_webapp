@@ -3,11 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "board.model.BoardDTO" %>
+
+<%
+	String json = (String)session.getAttribute("json");
+%>
+
 <h1>여행 후기</h1>
-
-
 <script>
-var boardList = <%= (String)session.getAttribute("json") %>;
+var boardList = <%= json %>;
 var user_id = <%= (String)session.getAttribute("user_id") %>;
 console.log(user_id);
 </script>
@@ -18,7 +21,6 @@ console.log(user_id);
 	   <option value="content">내용 검색</option>
 	   <option value="user_name">작성자 검색</option>
    </select>
-	
  <div class="input-group-btn">
 	 <input class="form-control" type="text" name="searchStr" ng-model="searchStr" placeholder="검색할 문맥" style="width:250px; float:left; height:30px;">
 	 <a id="searchBtn" href="#!/search.bctrl?page=index.html#!/reviews.bctrl&search_type={{ search_type }}&searchStr={{ searchStr }}" class="btn btn-info" style="height: 30px;">
@@ -27,11 +29,6 @@ console.log(user_id);
 	 <a onclick="checkLogin('#!/boardWrite', user_id);" class="btn btn-success" style="height:30px;">	<span class="glyphicon glyphicon-pencil"></span></a>
    </div>
 </div>
-
-<%
-	String json = (String)session.getAttribute("json");
-%>
-
 <div id="review_table" ng-repeat="x in list">
 	<table>
 		<td rowspan="2" style="width: 100px;"><img src="./public/img/tokyo.jpg" width="90px" height="90px" align="left"></td>
@@ -48,8 +45,6 @@ console.log(user_id);
 		</tr>
 	</table>
 </div>
-
-
 <center>
 	<ul class="pagination pagination">
 	    <li><a href="reviews.bctrl?page=1">1</a></li>

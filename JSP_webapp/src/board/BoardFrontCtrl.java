@@ -51,10 +51,10 @@ public class BoardFrontCtrl extends HttpServlet {
 			viewPage = "boardList.jsp";
 		}
 		//조회수 상위 3개 목록 조회
-		else if(cmdURI.equals("/readCntDescList.bctrl")){
+		else if(cmdURI.equals("/index.jsp")){
 			cmd = new readCntDescListCmd();
 			cmd.execute(request, response);
-			viewPage = "readCntDescList.jsp";
+			viewPage = "index.jsp";
 		}
 		//글 작성 화면 제공
 		/*else if(cmdURI.equals("/boardWrite")) {
@@ -95,13 +95,13 @@ public class BoardFrontCtrl extends HttpServlet {
 			
 			cmd = new BoardUpdateFormCmd();
 			cmd.execute(request, response);
-			viewPage = "boardUpdateForm.jsp";
+			viewPage = "public/php/updateRedirect.jsp";
 		}
 		//글수정 처리
 		else if(cmdURI.equals("/boardUpdate.bctrl")){
 			cmd = new BoardUpdateCmd();
 			cmd.execute(request, response);
-			viewPage = "boardList.bctrl";
+			viewPage = "reviews.bctrl";
 		}
 	
 		// 글 삭제

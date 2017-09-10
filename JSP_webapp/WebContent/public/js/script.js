@@ -50,6 +50,9 @@ app.config(function($routeProvider/*, $locationProvider, $httpProvider*/){
   .when('/setSession', {
       templateUrl: './public/php/SessionAttributeSet.jsp'
   })
+  .when('/boardUpdate', {
+      templateUrl: './public/route/boardUpdateForm.jsp'
+  })
   //route back to main otherwise
   .otherwise({
     redirectTo: '/'
@@ -144,9 +147,9 @@ function checkLogin(url, user_id){
 function checkAuthor(url, user_no, author){
 	var url = url;
 	var user_no = user_no;
-	if(user_id == null || user_id == ""){
+	if(user_no == null || user_no == ""){
 		alert("해당 서비스를 사용하려면 로그인 해주세요");
-	} else if (user_id == author){
+	} else if (user_no == author){
 		moveTo(url);
 	}else {
 		alert("해당 글에 대한 권한이 없습니다");

@@ -34,8 +34,6 @@ app.controller('signupCtrl', function ($scope, $http) {
 
 //view contents control
 app.controller('viewContentsCtrl', function ($scope, $http) {
-	$scope.user_id = user_id;
-	$scope.user_no = user_no;
 });
 
 //match list controll

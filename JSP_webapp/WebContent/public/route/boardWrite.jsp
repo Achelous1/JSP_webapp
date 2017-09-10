@@ -22,20 +22,6 @@
               <td>
                 <input type="radio" name="type" value="rev">후기
                 <input type="radio" name="type" value="rec" disabled>추천여행지
-                <!-- <select name='job' size='1'>
-                  <option value=''>나의 여행지</option>
-                  <option value='17/10/18~17/10/20'>17/10/18~17/10/20</option>
-                  <option value='17/10/28~17/10/05'>17/10/28~17/10/05</option>
-                  <option value=''>3</option>
-                  <option value=''>4</option>
-                  <option value=''>5</option>
-                  <option value=''>6</option>
-                  <option value=''>7</option>
-                  <option value=''>8</option>
-                  <option value=''>9</option>
-                  <option value=''>10</option>
-                  <option value=''>11</option>
-                </select> -->
                 <input type="file" name="fileName" value="사진 등록" >
               </td>
             </tr>
