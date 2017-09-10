@@ -34,17 +34,8 @@ app.controller('signupCtrl', function ($scope, $http) {
 
 //view contents control
 app.controller('viewContentsCtrl', function ($scope, $http) {
-    $http.get("viewBoard.bctrl")
-    .then(function(response) {
-        //First function handles success
-        //$scope.content = response.data;
-        $scope.content = myJSON;
-    }, function(response) {
-        //Second function handles error
-        $scope.error = respons.error;
-        if(error == '404')
-            $scope.content = "there are not contents available";
-    });
+	$scope.user_id = user_id;
+	$scope.user_no = user_no;
 });
 
 //match list controll

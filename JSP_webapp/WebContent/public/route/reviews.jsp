@@ -5,6 +5,13 @@
 <%@ page import = "board.model.BoardDTO" %>
 <h1>여행 후기</h1>
 
+
+<script>
+var boardList = <%= (String)session.getAttribute("json") %>;
+var user_id = <%= (String)session.getAttribute("user_id") %>;
+console.log(user_id);
+</script>
+
 <div class="form-group" style="margin-top:50px; padding-left: 60%;">
 	<select class="form-control" name="search_type" ng-model="search_type" style="width:150px; float:left; height: 30px;" placeholder="검색 유형">
 	   <option style="font-size: 16px;" value="title" selected>제목 검색</option>
@@ -17,7 +24,7 @@
 	 <a id="searchBtn" href="#!/search.bctrl?page=index.html#!/reviews.bctrl&search_type={{ search_type }}&searchStr={{ searchStr }}" class="btn btn-info" style="height: 30px;">
 		 <i class="glyphicon glyphicon-search"></i>
 	 </a>
-	 <a href="#!/boardWrite" class="btn btn-success" style="height:30px;">	<span class="glyphicon glyphicon-pencil"></span></a>
+	 <a onclick="checkLogin('#!/boardWrite', user_id);" class="btn btn-success" style="height:30px;">	<span class="glyphicon glyphicon-pencil"></span></a>
    </div>
 </div>
 
@@ -43,11 +50,6 @@
 </div>
 
 
-
-<script>
-var boardList = <%= json %>;
-</script>
-
 <center>
 	<ul class="pagination pagination">
 	    <li><a href="reviews.bctrl?page=1">1</a></li>
@@ -57,3 +59,4 @@ var boardList = <%= json %>;
 	    <li><a href="reviews.bctrl?page=5">5</a></li>
 	</ul>
 </center>
+

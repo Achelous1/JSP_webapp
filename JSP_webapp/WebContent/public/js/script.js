@@ -128,3 +128,28 @@ $('#datePicker').daterangepicker({
   console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
 });
 
+
+//세션 체크 후 로그인 아닐 시 alert
+function checkLogin(url, user_id){
+	var url = url;
+	var user_id = user_id;
+	if(user_id == null || user_id == ""){
+		alert("해당 서비스를 사용하려면 로그인 해주세요");
+	} else {
+		moveTo(url);
+	}
+}
+
+//아이디 동일여부 확인
+function checkAuthor(url, user_no, author){
+	var url = url;
+	var user_no = user_no;
+	if(user_id == null || user_id == ""){
+		alert("해당 서비스를 사용하려면 로그인 해주세요");
+	} else if (user_id == author){
+		moveTo(url);
+	}else {
+		alert("해당 글에 대한 권한이 없습니다");
+	}
+}
+
