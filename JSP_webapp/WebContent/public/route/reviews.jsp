@@ -6,13 +6,12 @@
 
 <%
 	String json = (String)session.getAttribute("json");
+	String user_id = (String)session.getAttribute("user_id");
 %>
 
 <h1>여행 후기</h1>
 <script>
 var boardList = <%= json %>;
-var user_id = <%= (String)session.getAttribute("user_id") %>;
-console.log(user_id);
 </script>
 
 <div class="form-group" style="margin-top:50px; padding-left: 60%;">
@@ -26,7 +25,7 @@ console.log(user_id);
 	 <a id="searchBtn" href="#!/search.bctrl?page=Main#!/reviews.bctrl&search_type={{ search_type }}&searchStr={{ searchStr }}" class="btn btn-info" style="height: 30px;">
 		 <i class="glyphicon glyphicon-search"></i>
 	 </a>
-	 <a onclick="checkLogin('#!/boardWrite', user_id);" class="btn btn-success" style="height:30px;">	<span class="glyphicon glyphicon-pencil"></span></a>
+	 <a onclick="checkLogin('#!/boardWrite', '${ user_id }');" class="btn btn-success" style="height:30px;">	<span class="glyphicon glyphicon-pencil"></span></a>
    </div>
 </div>
 <div id="review_table" ng-repeat="x in list">

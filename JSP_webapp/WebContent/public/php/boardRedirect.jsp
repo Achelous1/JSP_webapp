@@ -17,7 +17,7 @@ pageEncoding="UTF-8"%>
     session.setAttribute("json", json);
 %>
 <script>
-	moveTo('index.jsp#!/reviews');
+	moveTo('Main#!/reviews');
 </script>
 </body>
 </html>

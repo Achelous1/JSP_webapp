@@ -14,7 +14,7 @@
 		session.setAttribute("boardUpdateForm", dto);
 %>
 <script>
-	moveTo("index.jsp#!/boardUpdate");
+	moveTo("Main#!/boardUpdate");
 </script>
 </body>
 </html>
