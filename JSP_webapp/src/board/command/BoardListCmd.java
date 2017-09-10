@@ -14,15 +14,18 @@ import board.model.*;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BoardListCmd implements BoardCmd {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		//선언부분
+		
+		
+		/*//선언부분
 		BoardDAO dao = new BoardDAO();
 		ArrayList<BoardDTO> list;
-		Gson gson = new Gson();
+		//Gson gson = new Gson();
 		
 		//구현부분
 		System.out.println("list()");
@@ -37,8 +40,8 @@ public class BoardListCmd implements BoardCmd {
 		
 		String json = gson.toJson(list);
         try {
-    		response.setContentType("application/json");
-			response.getWriter().write(json);
+    		//response.setContentType("application/json");
+			//response.getWriter().write(json);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,11 +53,15 @@ public class BoardListCmd implements BoardCmd {
 		System.out.println(json);
 		
 		pageCnt = dao.boardPageCnt();
-		request.setAttribute("pageCnt", pageCnt);
+		request.setAttribute("pageCnt", pageCnt);*/
 		
-		/*// 현재 페이지 번호 만들기
+		
+		
+		
+		// 현재 페이지 번호 만들기
 	    int spage = 1;
 	    String page = request.getParameter("page");
+	    Gson gson = new Gson();
 	    
 	    if(page != null)
 	        spage = Integer.parseInt(page);
@@ -66,6 +73,15 @@ public class BoardListCmd implements BoardCmd {
 	    BoardDAO dao = new BoardDAO();
 	    int listCount = dao.getBoardListCount(listOpt);
 	    ArrayList<BoardDTO> list =  dao.boardList(listOpt);
+	    
+	    String json = gson.toJson(list);
+        try {
+    		response.setContentType("application/json");
+			response.getWriter().write(json);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    
 	    // 한 화면에 10개의 게시글을 보여지게함
 	    // 페이지 번호는 총 5개, 이후로는 [다음]으로 표시
@@ -86,8 +102,9 @@ public class BoardListCmd implements BoardCmd {
 	    
 	    // 글의 총 수와 글목록 저장
 	    //request.setAttribute("listCount", listCount);
-	    request.setAttribute("list", list);
-	*/
+	    request.setAttribute("boardList", list);
+	    request.setAttribute("json", json);
+		
 	}
 
 }

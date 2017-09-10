@@ -3,6 +3,8 @@ package board.model;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.naming.*;
 import javax.sql.DataSource;
 
@@ -24,7 +26,7 @@ public class BoardDAO {
 	}
 	
 	//게시판 목록 조회 기능
-	public ArrayList<BoardDTO> boardList(String CurPage) { // 현재 표시할 페이지 받아옴 =
+	public ArrayList<BoardDTO> boardList(HashMap<String, Object> listOpt) { // 현재 표시할 페이지 받아옴 =
 		// listOpt
 			ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 			
@@ -32,21 +34,85 @@ public class BoardDAO {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			
-			/*int start = (Integer)listOpt.get("start"); // 현재 페이지번호
-			*/
+			int start = (Integer)listOpt.get("start"); // 현재 페이지번호
+			
+			System.out.println("start: " + start);
+			
 			try {
 			conn = ds.getConnection();
-			String sql = "SELECT * FROM BOARD ORDER BY ref desc, step asc ";
-			/*sql += "(select rownum rnum, BOARD_NO, MEM_NO, TITLE";
-			sql += ", CONTENTS, POST_DATE, REF, STEP, LEV, READ_CNT, CHILD_CNT";
-			sql += "FROM";
-			sql += " (select * from BOARD order by REF desc, STEP asc)) ";
+			String sql = "SELECT * FROM ";//BOARD ORDER BY ref desc, step asc ";
+			sql += "(select rownum rnum, BOARD_NO, MEM_NO, TITLE";
+			sql += ", CONTENTS, POST_DATE, REF, STEP, LEV, READ_CNT, CHILD_CNT ";
+			sql += "FROM ";
+			sql += "(select * from BOARD order by REF desc, STEP asc)) ";
 			sql += "where rnum>=? and rnum<=?";
-			// 디비테이블 조회 // ref, step은 이후 답변글 처리하기 위한 컬럼//LIMIT [시작번호], [출력범위]
-			*/
+			// 디비테이블 조회 // ref, step은 이후 답변글 처리하기 위한 컬럼
+			
+			System.out.println(sql);
+			
 			pstmt = conn.prepareStatement(sql);
-			/*pstmt.setInt(1, start);
-			pstmt.setInt(2, start+9);*/
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, start+9);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				int board_no = rs.getInt("board_no");
+				String mem_no = rs.getString("mem_no");
+				String title = rs.getString("title");
+				String contents = rs.getString("contents");
+				Date post_date = rs.getDate("post_date");
+				int ref = rs.getInt("ref");
+				int step = rs.getInt("step");
+				int lev = rs.getInt("lev");
+				int read_cnt = rs.getInt("read_cnt");
+				int child_cnt = rs.getInt("child_cnt");
+				
+				BoardDTO writing = new BoardDTO();
+				writing.setBoard_no(board_no);
+				writing.setMem_no(mem_no);
+				writing.setTitle(title);
+				writing.setContents(contents);
+				writing.setPost_date(post_date);
+				writing.setRef(ref);
+				writing.setStep(step);
+				writing.setLev(lev);
+				writing.setRead_cnt(read_cnt);
+				writing.setChild_cnt(child_cnt);
+				
+				list.add(writing);
+				
+				System.out.println(list);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs !=null) rs.close();
+				if(pstmt !=null) pstmt.close();
+				if(conn !=null) conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+	//조회수 상위 3개 리스팅
+	public ArrayList<BoardDTO> readCntDescList() { // 현재 표시할 페이지 받아옴 =
+		// listOpt
+			ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+			conn = ds.getConnection();
+			String sql = "SELECT * FROM BOARD WHERE ROWNUM <=3 ORDER BY read_cnt desc ";
+			
+			pstmt = conn.prepareStatement(sql);	
 			
 			rs = pstmt.executeQuery();
 			
@@ -91,36 +157,43 @@ public class BoardDAO {
 		return list;
 	}
 	
-	//게시판 페이징 처리
-	public int boardPageCnt(){
-		int pageCnt = 0;
-		
-		Connection conn = null;
+	// 글의 개수를 가져오는 메서드
+    public int getBoardListCount(HashMap<String, Object> listOpt)
+    {
+        int result = 0;
+        
+        Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		try {
-			conn = ds.getConnection();
-			String sql = "SELECT COUNT(*) AS BOARD_NO FROM BOARD";		
-			pstmt = conn.prepareStatement(sql);			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				pageCnt = rs.getInt("board_no") / WRITING_PER_PAGE +1;
-			}
-		}catch(Exception e) {
-				e.printStackTrace();
-		}finally {
-			try {
-				if(rs !=null) rs.close();
-				if(pstmt !=null) pstmt.close();
-				if(conn !=null) conn.close();
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return pageCnt;
-	}
+        
+        try {
+            conn = ds.getConnection();
+            StringBuffer sql = new StringBuffer();
+            
+            sql.append("select count(*) from BOARD");
+            pstmt = conn.prepareStatement(sql.toString());
+              
+            // StringBuffer를 비운다.
+            sql.delete(0, sql.toString().length());      
+            
+            rs = pstmt.executeQuery();
+            
+            if(rs.next())    
+            	result = rs.getInt(1);
+            
+        } catch(Exception e) {
+			e.printStackTrace();
+        }finally {
+        	try {
+        		if(rs !=null) rs.close();
+        		if(pstmt !=null) pstmt.close();
+        		if(conn !=null) conn.close();
+        	}catch(SQLException e) {
+        		e.printStackTrace();
+        	}
+        }
+        return result;
+    } // end getBoardListCount
 	
 	//게시글 등록 기능
 	public void boardWrite (String mem_no, String title, String contents){

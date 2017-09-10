@@ -32,7 +32,7 @@
 						<c:forEach begin="1" end="${dto.lev }">
 							<%= "&nbsp;&nbsp;" %>
 						</c:forEach>
-						<a href="viewBoard.bctrl?board_no=${dto.board_no }">${dto.title }</a></td>
+						<a href="viewBoard.bctrl?board_no=${dto.board_no }">${dto.title }</a></td> 
 					<td>${dto.mem_no }</td>
 					<td>${dto.post_date }</td>
 					
@@ -43,10 +43,22 @@
 			
 			<tr>
 				<td colspan="6">
-				<a href="boardList.bctrl">[첫 페이지로]</a>
-					<c:forEach var ="i" begin="1" end ="${pageCnt}">
-						<a href="boardList.bctrl?curPage=${i}">[${i}]</a>
-					</c:forEach>
+				        <c:if test="${startPage != 1}">
+				            <a href='boardList.bctrl?page=${startPage-1}'>[ 이전 ]</a>
+				        </c:if>
+				        
+				        <c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
+				            <c:if test="${pageNum == spage}">
+				                ${pageNum}&nbsp;
+				            </c:if>
+				            <c:if test="${pageNum != spage}">
+				                <a href='boardList.bctrl?page=${pageNum}'>${pageNum}&nbsp;</a>
+				            </c:if>
+				        </c:forEach>
+				        
+				        <c:if test="${endPage != maxPage }">
+				            <a href='boardList.bctrl?page=${endPage+1 }'>[다음]</a>
+				        </c:if>
 				</td>
 			
 			</tr>
