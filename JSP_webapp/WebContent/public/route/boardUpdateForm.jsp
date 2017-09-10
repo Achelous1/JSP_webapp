@@ -14,7 +14,10 @@
             <tr>
                 <th>제목</th>
                 <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control" value="${boardUpdateForm.title}"/></td>
-                <td><input type="hidden" name="mem_no" value= "<%= session.getAttribute("user_no") %>"  /></td>
+                <td><input type="hidden" name="mem_no" value= "${boardUpdateForm.mem_no }"  />
+                	<input type="hidden" name="board_no" value="${boardUpdateForm.board_no}">
+                </td>
+                
             </tr>
             <tr>
                 <td>작성자</td>
