@@ -21,7 +21,6 @@
   <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="./public/js/script.js"></script>
   <script src="./public/js/controllers.js"></script>
-  <script src="./public/js/paging.min.js"></script>
   <script src="./public/js/temp.js"></script>
   <title>외로운 여행자</title>
 </head>
