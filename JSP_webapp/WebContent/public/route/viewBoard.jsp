@@ -21,10 +21,10 @@
         <td colspan="4" align="right">
         <h1 style="float:left;">게시글보기</h1>
 	        <div class="btn-group"  style="float: right; padding-top: 40px;">
-			  <input type="button" value="글쓰기" onclick="checkLogin('#!/boardWrite', user_id);" class="btn btn-primary btn-sm">
-	          <input type="button" value="글수정" onclick="checkAuthor('boardUpdateForm.bctrl?board_no=${content.board_no}', user_no, ${ content.mem_no });" class="btn btn-warning btn-sm">
-	          <input type="button" value="글삭제" onclick="checkAuthor('boardDelete.bctrl?board_no=${content.board_no}', user_no, ${ content.mem_no });" class="btn btn-danger btn-sm">
-	          <input type="button" value="답글작성" onclick="checkLogin('boardReplyForm.bctrl?board_no=${content.board_no}', user_id);" class="btn btn-success btn-sm">
+			  <input type="button" value="글쓰기" onclick="checkLogin('#!/boardWrite', ${ user_id });" class="btn btn-primary btn-sm">
+	          <input type="button" value="글수정" onclick="checkAuthor('boardUpdateForm.bctrl?board_no=${content.board_no}', ${ user_no }, ${ content.mem_no });" class="btn btn-warning btn-sm">
+	          <input type="button" value="글삭제" onclick="checkAuthor('boardDelete.bctrl?board_no=${content.board_no}', ${ user_no }, ${ content.mem_no });" class="btn btn-danger btn-sm">
+	          <input type="button" value="답글작성" onclick="checkLogin('boardReplyForm.bctrl?board_no=${content.board_no}', ${ user_id });" class="btn btn-success btn-sm">
 			  <input type="button" value="목록으로" onclick="history.back(-1);" class="btn btn-default btn-sm">
 			</div>
         </td>
